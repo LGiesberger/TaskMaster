@@ -1,0 +1,19 @@
+{
+  "name": "solo-project",
+  "version": "1.0.0",
+  "description": "This is my solo project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LGiesberger/solo-project.git"
+  },
+  "author": "Lou Giesberger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LGiesberger/solo-project/issues"
+  },
+  "homepage": "https://github.com/LGiesberger/solo-project#readme"
+}
