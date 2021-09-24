@@ -14,9 +14,10 @@ export default function App() {
 
   useEffect(() => {
     dispatch(getAllTasksAction(numericalDate));
-  }, []);
+  }, [tasks]);
 
   return (
+    // TODO: Create Done/Open tasks
     <div className="dashboard">
       <div className="header">
         <h4 className="header-title">{moment().format('MMMM Do')}</h4>

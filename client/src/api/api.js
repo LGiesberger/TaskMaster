@@ -24,7 +24,7 @@ export async function createTask(title) {
 }
 
 export async function deleteTask(taskId) {
-  fetch(`${SERVER_URL}/task/${taskId}`, {
+  fetch(`${SERVER_URL}/tasks/${taskId}`, {
     method: 'DELETE',
   });
 }

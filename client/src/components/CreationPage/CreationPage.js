@@ -6,9 +6,9 @@ import closeIcon from '../../images/5299154331543238955.svg';
 import './CreationPage.css';
 
 export default function CreationPage() {
-  const [title, setTitle] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
+  const [title, setTitle] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();

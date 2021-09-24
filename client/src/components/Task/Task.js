@@ -1,15 +1,24 @@
 import { useDispatch } from 'react-redux';
-import { changeStatusAction } from '../../redux/actions/taskActions';
-import ellipsis from '../../images/ellipsis-v-solid.svg';
+import {
+  changeStatusAction,
+  deleteTaskAction,
+} from '../../redux/actions/taskActions';
+import ellipsisIcon from '../../images/ellipsis-v-solid.svg';
 import checkIcon from '../../images/check-solid.svg';
 import circleIcon from '../../images/circle-regular.svg';
+import trashIcon from '../../images/trash-solid (1).svg';
 import { Link } from 'react-router-dom';
 import './task.css';
 
 export default function Task({ task }) {
   const dispatch = useDispatch();
+
   function handleStatusChange(taskId) {
     dispatch(changeStatusAction(taskId));
+  }
+
+  function handleDelete(taskId) {
+    dispatch(deleteTaskAction(taskId));
   }
 
   return (
@@ -33,8 +42,14 @@ export default function Task({ task }) {
             },
           }}
         >
-          <img src={ellipsis} className="dropdown-icon" alt="three dots" />
+          <img src={ellipsisIcon} className="dropdown-icon" alt="three dots" />
         </Link>
+        <img
+          src={trashIcon}
+          className="trash-icon"
+          alt="delete icon"
+          onClick={() => handleDelete(task._id)}
+        />
       </div>
     </div>
   );

@@ -12,8 +12,8 @@ function Root({ store }) {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path="/create" component={CreationPage} />
           <Route exact path="/" component={App} />
+          <Route exact path="/create" component={CreationPage} />
           <Route exact path="/edit/:taskId" component={EditPage} />
         </Switch>
       </Router>
