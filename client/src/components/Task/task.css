@@ -1,0 +1,35 @@
+.task {
+  display: flex;
+  background-color: #fff;
+  border-radius: 0 5px 5px 5px;
+  padding: 2% 2%;
+  margin-bottom: 2%;
+}
+
+.task .left-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+}
+
+.task .right-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
+}
+
+.task-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 3%;
+}
+
+.task .status-icon {
+  width: 7%;
+}
+
+.task .dropdown-icon {
+  height: 80%;
+  margin-top: 20%;
+}

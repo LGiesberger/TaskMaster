@@ -1,0 +1,35 @@
+.dashboard {
+  height: 100vh;
+  background-image: url('../../images/d94b2030c5b34491c73ee21fce6a22d1.jpg');
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  background-color: slateblue;
+  display: flex;
+  justify-content: center;
+  padding: 3%;
+  color: #fff;
+  position: relative;
+}
+
+.header-title {
+  font-weight: 500;
+}
+
+.header .icon {
+  width: 25px;
+  position: absolute;
+  right: 10px;
+}
+
+.button-container {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tasklist {
+  padding: 2% 2%;
+}

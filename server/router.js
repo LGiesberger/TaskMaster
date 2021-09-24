@@ -3,10 +3,11 @@ const router = Router();
 const controller = require('./controllers/index');
 
 // router.get('/days', controller.getAllDays);
-router.get('/tasks/:date', controller.getAllTasksForDay);
-router.post('/tasks', controller.createTask);
+router.get('/edit/:taskId', controller.getTask);
+router.post('/task', controller.createTask);
+router.post('/tasks', controller.getAllTasksForDay);
 router.put('/tasks/:taskId', controller.editTask);
-router.put('/tasks/:taskId/status', controller.setFinishedProp);
+router.put('/tasks/:taskId/status', controller.setCompletedProp);
 router.delete('/tasks/:taskId', controller.deleteTask);
 
 module.exports = router;

@@ -1,0 +1,68 @@
+.edit {
+  width: 100vw;
+  height: 100vh;
+}
+
+.edit-content {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.edit-header {
+  padding: 10px 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.edit-title {
+  font-weight: 500;
+}
+
+.edit-body {
+  height: 40vh;
+  padding: 20px 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+  position: relative;
+}
+
+.edit-form {
+  height: 100%;
+}
+
+.edit-input-label {
+  font-size: 15px;
+  color: #7a7a7a;
+}
+
+.edit-input {
+  width: 100%;
+  height: 50%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  color: rgb(70, 70, 70);
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.edit-button {
+  border: none;
+  background-color: slateblue;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 17px;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.close-icon {
+  width: 7%;
+  position: absolute;
+  right: 10px;
+}

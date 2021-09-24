@@ -5,10 +5,23 @@ const controller = {};
 
 // Get requests
 
+controller.getTask = async function (req, res) {
+  try {
+    const taskId = req.params.taskId;
+    const task = await Task.findById(taskId);
+    res.status(200).send(task);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Database error while retrieving task');
+  }
+};
+
+// Post requests
+
 controller.getAllTasksForDay = async function (req, res) {
   try {
-    const date = req.params.date;
-    const tasks = await Task.find({ date: date });
+    const { numericalDate } = req.body;
+    const tasks = await Task.find({ numericalDate: numericalDate });
     res.status(200).send(tasks);
   } catch (err) {
     console.log(err);
@@ -20,15 +33,14 @@ controller.getAllTasksForDay = async function (req, res) {
   }
 };
 
-// Post requests
-
 controller.createTask = async function (req, res) {
   try {
     const { title } = req.body;
     const newTask = await Task.create({
       title: title,
       completed: false,
-      date: moment().format('MMMM Do YYYY'),
+      date: new Date(),
+      numericalDate: Number(moment().format('YYYYMMDD')),
     });
     res.status(201).send(newTask);
   } catch (err) {
@@ -45,26 +57,34 @@ controller.editTask = async function (req, res) {
   // modify an existing Task and send it back to the client
   try {
     const taskId = req.params.taskId;
-    const newTitle = req.body;
-    const selectedTask = await Task.findByIdAndUpdate(taskId, {
-      title: newTitle,
-    });
-    res.status(204).send(selectedTask);
+    const { newTitle } = req.body;
+    const selectedTask = await Task.findByIdAndUpdate(
+      taskId,
+      {
+        title: newTitle,
+      },
+      { new: true } // Sends back the updated document
+    );
+    res.status(200).send(selectedTask);
   } catch (err) {
     console.log(err);
     res.status(500).send('There was a database error while updating the task');
   }
 };
 
-controller.setFinishedProp = async function (req, res) {
-  // set the 'finished' property to the opposite of the current value on an existing Task and send it back to the client
+controller.setCompletedProp = async function (req, res) {
+  // set the 'completed' property to the opposite of the current value on an existing Task and send it back to the client
   try {
     const taskId = req.params.taskId;
     const selectedTask = await Task.findById(taskId);
-    await Task.findByIdAndUpdate(taskId, {
-      completed: !selectedTask.completed,
-    });
-    res.status(204).send(selectedTask);
+    await Task.findByIdAndUpdate(
+      taskId,
+      {
+        completed: !selectedTask.completed,
+      },
+      { new: true }
+    );
+    res.status(200).send(selectedTask);
   } catch (err) {
     console.log(err);
     res
@@ -82,7 +102,7 @@ controller.deleteTask = async function (req, res) {
   try {
     const taskId = req.params.taskId;
     await Task.findByIdAndDelete(taskId);
-    res.status(204).send('Successfully deleted the task.');
+    res.status(204);
   } catch (err) {
     console.log(err);
     res.status(500).send('There was a database error while deleting the task.');
