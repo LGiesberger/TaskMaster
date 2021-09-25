@@ -35,12 +35,12 @@ controller.getAllTasksForDay = async function (req, res) {
 
 controller.createTask = async function (req, res) {
   try {
-    const { title } = req.body;
+    const { title, date } = req.body;
     const newTask = await Task.create({
       title: title,
       completed: false,
-      date: new Date(),
-      numericalDate: Number(moment().format('YYYYMMDD')),
+      date,
+      numericalDate: moment(date).format('YYYYMMDD'),
     });
     res.status(201).send(newTask);
   } catch (err) {
@@ -57,11 +57,13 @@ controller.editTask = async function (req, res) {
   // modify an existing Task and send it back to the client
   try {
     const taskId = req.params.taskId;
-    const { newTitle } = req.body;
+    const { newTitle, date } = req.body;
     const selectedTask = await Task.findByIdAndUpdate(
       taskId,
       {
         title: newTitle,
+        date,
+        numericalDate: moment(date).format('YYYYMMDD'),
       },
       { new: true } // Sends back the updated document
     );

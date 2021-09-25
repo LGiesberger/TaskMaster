@@ -1,16 +1,12 @@
 .dashboard {
   height: 100vh;
-  background-image: url('../../images/d94b2030c5b34491c73ee21fce6a22d1.jpg');
-  background-size: cover;
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
 
 .header {
-  background-color: slateblue;
+  height: 7vh;
   display: flex;
   justify-content: center;
   padding: 3%;
-  color: #fff;
   position: relative;
 }
 
@@ -18,14 +14,21 @@
   font-weight: 500;
 }
 
-.header .icon {
-  width: 25px;
-  position: absolute;
-  right: 10px;
+.dashboard-body {
+  border-top: 1px solid #eee;
+  display: flex;
+  height: 93vh;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.button-container {
-  width: 15%;
+.footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5%;
+}
+
+.footer .icon {
+  width: 50px;
 }

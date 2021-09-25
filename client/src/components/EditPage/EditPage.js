@@ -11,17 +11,17 @@ export default function EditPage() {
   const location = useLocation();
   const history = useHistory();
   const { taskId } = useParams();
-  const { title } = location.state;
-  const [newTitle, setNewTitle] = useState(title);
+  const { originalTitle, originalDate } = location.state;
+  const formattedDate = originalDate.slice(0, -8);
+  const [state, setState] = useState({
+    title: originalTitle,
+    date: formattedDate,
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(editTaskAction(taskId, newTitle));
+    dispatch(editTaskAction(taskId, state.title, state.date));
     history.push('/');
-  }
-
-  function handleChange({ target }) {
-    setNewTitle(target.value);
   }
 
   return (
@@ -37,9 +37,24 @@ export default function EditPage() {
           <form className="edit-form" onSubmit={handleSubmit}>
             <label className="edit-input-label">What are you planning?</label>
             <textarea
-              onChange={handleChange}
+              onChange={({ target }) =>
+                setState((prevState) => {
+                  return { ...prevState, title: target.value };
+                })
+              }
               className="edit-input"
-              value={newTitle}
+              value={state.title}
+            />
+            <label>When are you planning to do this?</label>
+            <input
+              className="edit-input"
+              type="datetime-local"
+              value={state.date}
+              onChange={({ target }) => {
+                setState((prevState) => {
+                  return { ...prevState, date: target.value };
+                });
+              }}
             />
             <button className="edit-button" type="submit">
               Edit

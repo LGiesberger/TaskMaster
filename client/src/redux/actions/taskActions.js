@@ -16,9 +16,9 @@ export const getAllTasksAction = (numericalDate) => {
   };
 };
 
-export const addTaskAction = (title) => {
+export const addTaskAction = ({ title, date }) => {
   return async (dispatch) => {
-    const task = await createTask(title);
+    const task = await createTask(title, date);
     dispatch({
       type: 'ADD_TASK',
       payload: task,
@@ -26,12 +26,12 @@ export const addTaskAction = (title) => {
   };
 };
 
-export const editTaskAction = (taskId, newTitle) => {
+export const editTaskAction = (taskId, newTitle, date) => {
   return async (dispatch) => {
-    await editTask(taskId, newTitle);
+    await editTask(taskId, newTitle, date);
     dispatch({
       type: 'EDIT_TASK',
-      payload: { taskId, newTitle },
+      payload: { taskId, newTitle, date },
     });
   };
 };

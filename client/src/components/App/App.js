@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTasksAction } from '../../redux/actions/taskActions';
-import plusSignIcon from '../../images/plus.svg';
+import plusSignIcon from '../../images/plus (1).svg';
 import TaskList from '../TaskList/TaskList';
 import './App.css';
 
@@ -22,12 +22,18 @@ export default function App() {
     <div className="dashboard">
       <div className="header">
         <h4 className="header-title">{moment().format('MMMM Do')}</h4>
-        <Link to="/create">
-          <img className="icon" src={plusSignIcon} alt="plus icon"></img>
-        </Link>
       </div>
-      <TaskList tasks={completedTasks} listTitle={'Completed'} />
-      <TaskList tasks={ongoingTasks} listTitle={'Ongoing'} />
+      <div className="dashboard-body">
+        <div className="lists">
+          <TaskList tasks={completedTasks} listTitle={'Completed'} />
+          <TaskList tasks={ongoingTasks} listTitle={'Ongoing'} />
+        </div>
+        <div className="footer">
+          <Link to="/create">
+            <img className="icon" src={plusSignIcon} alt="plus icon2"></img>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

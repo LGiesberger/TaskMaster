@@ -14,11 +14,11 @@ export function getAllTasksForDay(numericalDate) {
   }).then((res) => res.json());
 }
 
-export function createTask(title) {
+export function createTask(title, date) {
   return fetch(`${SERVER_URL}/task`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title }),
+    body: JSON.stringify({ title, date }),
   }).then((res) => res.json());
 }
 
@@ -34,10 +34,10 @@ export function setCompletedProp(taskId) {
   }).then((res) => res.json());
 }
 
-export function editTask(taskId, newTitle) {
+export function editTask(taskId, newTitle, date) {
   fetch(`${SERVER_URL}/tasks/${taskId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ newTitle }),
+    body: JSON.stringify({ newTitle, date }),
   });
 }

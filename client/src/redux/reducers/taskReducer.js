@@ -8,18 +8,20 @@ const taskReducer = (state = [], action) => {
       return state.map((task) => ({
         ...task,
         title:
-          task.id === action.payload.taskId
+          task._id === action.payload.taskId
             ? action.payload.newTitle
             : task.title,
+        date:
+          task._id === action.payload.taskId ? action.payload.date : task.date,
       }));
     case 'CHANGE_STATUS':
       return state.map((task) => ({
         ...task,
         completed:
-          task.id === action.payload._id ? !task.completed : task.completed,
+          task._id === action.payload._id ? !task.completed : task.completed,
       }));
     case 'DELETE_TASK':
-      return state.filter((task) => task.id !== action.taskId);
+      return state.filter((task) => task._id !== action.taskId);
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import {
   changeStatusAction,
   deleteTaskAction,
 } from '../../redux/actions/taskActions';
-import ellipsisIcon from '../../images/ellipsis-v-solid.svg';
+import pencilIcon from '../../images/pencil-alt-solid.svg';
 import checkIcon from '../../images/check-solid.svg';
 import circleIcon from '../../images/circle-regular.svg';
 import trashIcon from '../../images/trash-solid (1).svg';
@@ -31,18 +31,21 @@ export default function Task({ task }) {
           alt={task.completed ? 'completed icon' : 'not completed icon'}
         />
 
-        <p className="task-title">{task.title}</p>
+        <p className={task.completed ? 'task-title completed' : 'task-title'}>
+          {task.title}
+        </p>
       </div>
       <div className="right-container">
         <Link
           to={{
             pathname: `/edit/${task._id}`,
             state: {
-              title: task.title,
+              originalTitle: task.title,
+              originalDate: task.date,
             },
           }}
         >
-          <img src={ellipsisIcon} className="dropdown-icon" alt="three dots" />
+          <img src={pencilIcon} className="edit-icon" alt="pencil edit icon" />
         </Link>
         <img
           src={trashIcon}

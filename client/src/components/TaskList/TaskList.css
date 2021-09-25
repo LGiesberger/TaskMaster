@@ -3,6 +3,7 @@
 }
 
 .tasklist-title {
-  color: #fff;
+  color: rgb(170, 170, 170);
   margin: 10px 0;
+  font-weight: 600;
 }

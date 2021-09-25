@@ -8,17 +8,13 @@ import './CreationPage.css';
 export default function CreationPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [title, setTitle] = useState('');
+  const [state, setState] = useState({ title: '', date: '' });
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(addTaskAction(title));
-    setTitle('');
+    dispatch(addTaskAction(state));
+    setState({ title: '', date: '' });
     history.push('/');
-  }
-
-  function handleChange({ target }) {
-    setTitle(target.value);
   }
 
   return (
@@ -36,9 +32,26 @@ export default function CreationPage() {
               What are you planning?
             </label>
             <textarea
-              onChange={handleChange}
+              onChange={({ target }) =>
+                setState((prevState) => {
+                  return { ...prevState, title: target.value };
+                })
+              }
               className="creation-input"
-              value={title}
+              value={state.title}
+            />
+            <label className="creation-input-label">
+              When are you planning to do this?
+            </label>
+            <input
+              onChange={({ target }) =>
+                setState((prevState) => {
+                  return { ...prevState, date: target.value };
+                })
+              }
+              type="datetime-local"
+              className="creation-input"
+              value={state.date}
             />
             <button className="creation-button" type="submit">
               Create
