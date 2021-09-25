@@ -17,7 +17,6 @@ export const getAllTasksAction = (numericalDate) => {
 };
 
 export const addTaskAction = (title) => {
-  console.log('test2');
   return async (dispatch) => {
     const task = await createTask(title);
     dispatch({

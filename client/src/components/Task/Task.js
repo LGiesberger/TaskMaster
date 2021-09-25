@@ -8,7 +8,7 @@ import checkIcon from '../../images/check-solid.svg';
 import circleIcon from '../../images/circle-regular.svg';
 import trashIcon from '../../images/trash-solid (1).svg';
 import { Link } from 'react-router-dom';
-import './task.css';
+import './Task.css';
 
 export default function Task({ task }) {
   const dispatch = useDispatch();

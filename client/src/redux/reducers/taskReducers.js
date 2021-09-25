@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 const tasks = (state = [], action) => {
   switch (action.type) {
     case 'GET_ALL_TASKS':
@@ -25,4 +27,28 @@ const tasks = (state = [], action) => {
   }
 };
 
-export default tasks;
+const completedTasks = (state = [], action) => {
+  switch (action.type) {
+    case 'GET_ALL_TASKS':
+      return action.payload.filter((task) => {
+        return task.completed === true;
+      });
+    default:
+      return state;
+  }
+};
+
+const ongoingTasks = (state = [], action) => {
+  switch (action.type) {
+    case 'GET_ALL_TASKS':
+      return action.payload.filter((task) => {
+        return task.completed === false;
+      });
+    default:
+      return state;
+  }
+};
+
+const reducers = combineReducers({ tasks, completedTasks, ongoingTasks });
+
+export default reducers;

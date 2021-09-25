@@ -2,7 +2,7 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/App/App';
-import store from './store/configureStore';
+import store from './redux/store/configureStore';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreationPage from './components/CreationPage/CreationPage';
 import EditPage from './components/EditPage/EditPage';

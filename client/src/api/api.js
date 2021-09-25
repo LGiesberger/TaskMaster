@@ -15,7 +15,6 @@ export async function getAllTasksForDay(numericalDate) {
 }
 
 export async function createTask(title) {
-  console.log('test');
   return fetch(`${SERVER_URL}/task`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -36,7 +35,6 @@ export async function setCompletedProp(taskId) {
 }
 
 export async function editTask(taskId, newTitle) {
-  console.log(taskId, newTitle);
   fetch(`${SERVER_URL}/tasks/${taskId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
