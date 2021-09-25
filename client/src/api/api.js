@@ -1,43 +1,43 @@
 const SERVER_URL = 'http://localhost:3001';
 
-export async function getSingleTask(taskId) {
+export function getSingleTask(taskId) {
   return fetch(`${SERVER_URL}/edit/${taskId}`, {
     method: 'GET',
   }).then((res) => res.json());
 }
 
-export async function getAllTasksForDay(numericalDate) {
+export function getAllTasksForDay(numericalDate) {
   return fetch(`${SERVER_URL}/tasks`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ numericalDate: numericalDate }),
+    body: JSON.stringify({ numericalDate }),
   }).then((res) => res.json());
 }
 
-export async function createTask(title) {
+export function createTask(title) {
   return fetch(`${SERVER_URL}/task`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title: title }),
+    body: JSON.stringify({ title }),
   }).then((res) => res.json());
 }
 
-export async function deleteTask(taskId) {
+export function deleteTask(taskId) {
   fetch(`${SERVER_URL}/tasks/${taskId}`, {
     method: 'DELETE',
   });
 }
 
-export async function setCompletedProp(taskId) {
-  fetch(`${SERVER_URL}/tasks/${taskId}/status`, {
+export function setCompletedProp(taskId) {
+  return fetch(`${SERVER_URL}/tasks/${taskId}/status`, {
     method: 'PUT',
-  });
+  }).then((res) => res.json());
 }
 
-export async function editTask(taskId, newTitle) {
+export function editTask(taskId, newTitle) {
   fetch(`${SERVER_URL}/tasks/${taskId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ newTitle: newTitle }),
+    body: JSON.stringify({ newTitle }),
   });
 }

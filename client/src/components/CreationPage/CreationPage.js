@@ -27,7 +27,7 @@ export default function CreationPage() {
         <div className="creation-header">
           <h4 className="creation-title">New Task</h4>
           <Link to="/">
-            <img src={closeIcon} className="close-icon"></img>
+            <img src={closeIcon} className="close-icon" alt="close icon"></img>
           </Link>
         </div>
         <div className="creation-body">

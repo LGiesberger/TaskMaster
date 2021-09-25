@@ -38,10 +38,10 @@ export const editTaskAction = (taskId, newTitle) => {
 
 export const changeStatusAction = (taskId) => {
   return async (dispatch) => {
-    await setCompletedProp(taskId);
+    const task = await setCompletedProp(taskId);
     dispatch({
       type: 'CHANGE_STATUS',
-      payload: { taskId },
+      payload: task,
     });
   };
 };

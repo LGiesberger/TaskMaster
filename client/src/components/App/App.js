@@ -8,22 +8,22 @@ import TaskList from '../TaskList/TaskList';
 import './App.css';
 
 export default function App() {
-  const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.taskReducer);
+  // const tasks = useSelector((state) => state.taskReducer);
   const completedTasks = useSelector((state) => state.completedReducer);
   const ongoingTasks = useSelector((state) => state.ongoingReducer);
+  const dispatch = useDispatch();
   const numericalDate = Number(moment().format('YYYYMMDD'));
 
   useEffect(() => {
     dispatch(getAllTasksAction(numericalDate));
-  }, []);
+  }, [dispatch, numericalDate, ongoingTasks, completedTasks]);
 
   return (
     <div className="dashboard">
       <div className="header">
         <h4 className="header-title">{moment().format('MMMM Do')}</h4>
         <Link to="/create">
-          <img className="icon" src={plusSignIcon}></img>
+          <img className="icon" src={plusSignIcon} alt="plus icon"></img>
         </Link>
       </div>
       <TaskList tasks={completedTasks} listTitle={'Completed'} />

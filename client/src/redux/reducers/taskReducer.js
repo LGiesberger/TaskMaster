@@ -16,7 +16,7 @@ const taskReducer = (state = [], action) => {
       return state.map((task) => ({
         ...task,
         completed:
-          task.id === action.payload.taskId ? !task.completed : task.completed,
+          task.id === action.payload._id ? !task.completed : task.completed,
       }));
     case 'DELETE_TASK':
       return state.filter((task) => task.id !== action.taskId);
