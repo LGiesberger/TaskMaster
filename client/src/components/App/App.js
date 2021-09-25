@@ -9,9 +9,9 @@ import './App.css';
 
 export default function App() {
   const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks);
-  const completedTasks = useSelector((state) => state.completedTasks);
-  const ongoingTasks = useSelector((state) => state.ongoingTasks);
+  const tasks = useSelector((state) => state.taskReducer);
+  const completedTasks = useSelector((state) => state.completedReducer);
+  const ongoingTasks = useSelector((state) => state.ongoingReducer);
   const numericalDate = Number(moment().format('YYYYMMDD'));
 
   useEffect(() => {
