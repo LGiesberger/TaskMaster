@@ -4,24 +4,43 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTasksAction } from '../../redux/actions/taskActions';
 import plusSignIcon from '../../images/plus (1).svg';
+import rightArrowIcon from '../../images/chevron-right-solid.svg';
+import leftArrowIcon from '../../images/chevron-left-solid.svg';
 import TaskList from '../TaskList/TaskList';
 import './App.css';
+import {
+  nextDayAction,
+  previousDayAction,
+} from '../../redux/actions/dateActions';
 
 export default function App() {
-  // const tasks = useSelector((state) => state.taskReducer);
   const completedTasks = useSelector((state) => state.completedReducer);
   const ongoingTasks = useSelector((state) => state.ongoingReducer);
+  const numericalDate = useSelector((state) => state.dateReducer);
+  const completedTasksString = JSON.stringify(completedTasks);
+  const ongoingTasksString = JSON.stringify(ongoingTasks);
+  // JSON.stringify causes the array to be turned into a string, making it easier to do a strict equality comparison, therefore the useEffect method will not loop infinitely.
+  const dateFormatted = moment(String(numericalDate)).format('MMMM Do');
   const dispatch = useDispatch();
-  const numericalDate = Number(moment().format('YYYYMMDD'));
 
   useEffect(() => {
     dispatch(getAllTasksAction(numericalDate));
-  }, [dispatch, numericalDate, ongoingTasks, completedTasks]);
+  }, [dispatch, numericalDate, ongoingTasksString, completedTasksString]);
 
   return (
     <div className="dashboard">
       <div className="header">
-        <h4 className="header-title">{moment().format('MMMM Do')}</h4>
+        <img
+          src={leftArrowIcon}
+          alt="arrow icon left"
+          onClick={() => dispatch(previousDayAction(numericalDate))}
+        />
+        <h4 className="header-title">{dateFormatted}</h4>
+        <img
+          src={rightArrowIcon}
+          alt="arrow icon right"
+          onClick={() => dispatch(nextDayAction(numericalDate))}
+        />
       </div>
       <div className="dashboard-body">
         <div className="lists">

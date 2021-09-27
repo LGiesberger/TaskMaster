@@ -7,6 +7,7 @@ import {
 } from '../../api/api';
 
 export const getAllTasksAction = (numericalDate) => {
+  console.log('yo');
   return async (dispatch) => {
     const tasks = await getAllTasksForDay(numericalDate);
     dispatch({

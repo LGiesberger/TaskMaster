@@ -5,7 +5,7 @@
 .header {
   height: 7vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 3%;
   position: relative;
 }
