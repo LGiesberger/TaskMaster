@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createTaskAction } from '../../redux/actions/taskActions';
 import { Link, useHistory } from 'react-router-dom';
 import closeIcon from '../../images/5299154331543238955.svg';
 import './CreationPage.css';
-import transformDateForInput from '../../utils/utils';
+import {
+  checkCurrentDate,
+  numerifyDate,
+  transformDateForInput,
+} from '../../utils/utils';
 
 export default function CreationPage() {
+  const numericalDate = useSelector((state) =>
+    Number(numerifyDate(state.dateReducer))
+  );
   const dispatch = useDispatch();
   const history = useHistory();
-  const currentDateTime = transformDateForInput(new Date());
-  const [state, setState] = useState({ title: '', date: currentDateTime });
+  const defaultDateTime = transformDateForInput(
+    checkCurrentDate(String(numericalDate))
+  );
+  const [state, setState] = useState({ title: '', date: defaultDateTime });
 
   function handleSubmit(event) {
     event.preventDefault();

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import closeIcon from '../../images/5299154331543238955.svg';
 import './EditPage.css';
 import { useHistory, useLocation, useParams } from 'react-router';
-import transformDateForInput from '../../utils/utils';
+import { transformDateForInput } from '../../utils/utils';
 
 export default function EditPage() {
   const dispatch = useDispatch();
