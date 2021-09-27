@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import closeIcon from '../../images/5299154331543238955.svg';
 import './EditPage.css';
 import { useHistory, useLocation, useParams } from 'react-router';
+import transformDateForInput from '../../utils/utils';
 
 export default function EditPage() {
   const dispatch = useDispatch();
@@ -12,15 +13,16 @@ export default function EditPage() {
   const history = useHistory();
   const { taskId } = useParams();
   const { originalTitle, originalDate } = location.state;
-  const formattedDate = originalDate.slice(0, -8);
+  const formattedDate = transformDateForInput(originalDate);
   const [state, setState] = useState({
+    taskId,
     title: originalTitle,
     date: formattedDate,
   });
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(editTaskAction(taskId, state.title, state.date));
+    dispatch(editTaskAction(state));
     history.push('/');
   }
 

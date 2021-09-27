@@ -7,7 +7,6 @@ import {
 } from '../../api/api';
 
 export const getAllTasksAction = (numericalDate) => {
-  console.log('yo');
   return async (dispatch) => {
     const tasks = await getAllTasksForDay(numericalDate);
     dispatch({
@@ -17,22 +16,23 @@ export const getAllTasksAction = (numericalDate) => {
   };
 };
 
-export const addTaskAction = ({ title, date }) => {
+export const createTaskAction = ({ title, date }) => {
   return async (dispatch) => {
     const task = await createTask(title, date);
     dispatch({
-      type: 'ADD_TASK',
+      type: 'CREATE_TASK',
       payload: task,
     });
   };
 };
 
-export const editTaskAction = (taskId, newTitle, date) => {
+export const editTaskAction = ({ taskId, title, date }) => {
+  console.log(taskId, title, date);
   return async (dispatch) => {
-    await editTask(taskId, newTitle, date);
+    await editTask(taskId, title, date);
     dispatch({
       type: 'EDIT_TASK',
-      payload: { taskId, newTitle, date },
+      payload: { taskId, title, date },
     });
   };
 };

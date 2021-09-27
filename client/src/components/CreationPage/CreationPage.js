@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTaskAction } from '../../redux/actions/taskActions';
+import { createTaskAction } from '../../redux/actions/taskActions';
 import { Link, useHistory } from 'react-router-dom';
 import closeIcon from '../../images/5299154331543238955.svg';
 import './CreationPage.css';
+import transformDateForInput from '../../utils/utils';
 
 export default function CreationPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [state, setState] = useState({ title: '', date: '' });
+  const currentDateTime = transformDateForInput(new Date());
+  const [state, setState] = useState({ title: '', date: currentDateTime });
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(addTaskAction(state));
-    setState({ title: '', date: '' });
+    dispatch(createTaskAction(state));
     history.push('/');
   }
 
@@ -44,11 +45,12 @@ export default function CreationPage() {
               When are you planning to do this?
             </label>
             <input
-              onChange={({ target }) =>
+              onChange={({ target }) => {
+                console.log(target.value);
                 setState((prevState) => {
                   return { ...prevState, date: target.value };
-                })
-              }
+                });
+              }}
               type="datetime-local"
               className="creation-input"
               value={state.date}

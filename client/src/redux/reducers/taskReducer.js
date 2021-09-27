@@ -2,7 +2,7 @@ const taskReducer = (state = [], action) => {
   switch (action.type) {
     case 'GET_ALL_TASKS':
       return action.payload;
-    case 'ADD_TASK':
+    case 'CREATE_TASK':
       return [action.payload].concat(state);
     case 'EDIT_TASK':
       return state.map((task) => ({

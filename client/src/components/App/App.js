@@ -16,11 +16,13 @@ import {
 export default function App() {
   const completedTasks = useSelector((state) => state.completedReducer);
   const ongoingTasks = useSelector((state) => state.ongoingReducer);
-  const numericalDate = useSelector((state) => state.dateReducer);
+  const numericalDate = useSelector((state) =>
+    moment(state.dateReducer).format('YYYYMMDD')
+  );
   const completedTasksString = JSON.stringify(completedTasks);
   const ongoingTasksString = JSON.stringify(ongoingTasks);
   // JSON.stringify causes the array to be turned into a string, making it easier to do a strict equality comparison, therefore the useEffect method will not loop infinitely.
-  const dateFormatted = moment(String(numericalDate)).format('MMMM Do');
+  const headerDate = moment(String(numericalDate)).format('MMMM Do');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function App() {
           alt="arrow icon left"
           onClick={() => dispatch(previousDayAction(numericalDate))}
         />
-        <h4 className="header-title">{dateFormatted}</h4>
+        <h4 className="header-title">{headerDate}</h4>
         <img
           src={rightArrowIcon}
           alt="arrow icon right"
