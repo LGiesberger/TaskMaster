@@ -12,7 +12,7 @@ export const previousDayAction = (numericalDate) => {
     dispatch({ type: 'PREVIOUS_DATE', payload: tasks });
   };
 };
-export const selectDayAction = (numericalDate) => {
+export const selectDateAction = (numericalDate) => {
   return async (dispatch) => {
     const tasks = await getAllTasksForDay(numericalDate);
     dispatch({ type: 'SELECTED_DATE', payload: tasks, date: numericalDate });

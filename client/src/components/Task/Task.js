@@ -9,6 +9,7 @@ import circleIcon from '../../images/circle-regular.svg';
 import trashIcon from '../../images/trash-solid (1).svg';
 import { Link } from 'react-router-dom';
 import './Task.css';
+import { prettifyTime } from '../../utils/utils';
 
 export default function Task({ task }) {
   const dispatch = useDispatch();
@@ -45,7 +46,11 @@ export default function Task({ task }) {
             },
           }}
         >
-          <img src={pencilIcon} className="edit-icon" alt="pencil edit icon" />
+          <img
+            src={pencilIcon}
+            className="edit-icon"
+            alt="pencil edit icon"
+          ></img>
         </Link>
         <img
           src={trashIcon}
@@ -53,6 +58,7 @@ export default function Task({ task }) {
           alt="delete icon"
           onClick={() => handleDelete(task._id)}
         />
+        {prettifyTime(task.date)}
       </div>
     </div>
   );

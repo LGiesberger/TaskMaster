@@ -18,14 +18,14 @@
 
 .task .right-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  width: 10%;
+  width: 30%;
   padding-right: 5px;
 }
 
 .task-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   margin-left: 3%;
   color: #000;
@@ -36,22 +36,26 @@
 }
 
 .task a {
-  height: 80%;
+  display: inline-flex;
 }
 
 .task .edit-icon {
   height: 20px;
   margin: 10% 0;
-  margin-right: 10px;
 }
 
 .task .trash-icon {
   height: 20px;
   margin: 10% 0;
-  margin-left: 10px;
 }
 
 .completed {
   text-decoration: line-through;
   color: #bdbdbd;
+}
+
+.time {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
 }

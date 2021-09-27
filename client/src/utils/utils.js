@@ -18,9 +18,62 @@ export function checkCurrentDate(numericalDate) {
     : addTwelveHours(new Date(year, month, day));
 }
 
+export function prettifyTime(date) {
+  const time = moment(date).format('hh:mm A');
+  return (
+    <div className="time">
+      <p>{time.slice(0, 5)}</p>
+      <p>{time.slice(-2)}</p>
+    </div>
+  );
+}
+
+export function getDates(start, end) {
+  const dates = [];
+  let currentDate = start;
+
+  while (currentDate <= end) {
+    dates.push(currentDate);
+    currentDate = addDays.call(currentDate, 1);
+  }
+  return dates;
+}
+
+export function sortDates(dates) {
+  const datesObj = {
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: [],
+    10: [],
+    11: [],
+  };
+  dates.forEach((date) => {
+    datesObj[date.getMonth()].push(date);
+  });
+  return datesObj;
+}
+
+export function formatMonth(date) {
+  const options = { month: 'long' };
+  return new Intl.DateTimeFormat('en-US', options).format(date);
+}
+
 function addTwelveHours(date) {
   const twelveHoursInMilliseconds = 1000 * 60 * 60 * 12; // second * minute * hour * 12
   return new Date(Date.parse(date) + twelveHoursInMilliseconds);
+}
+
+function addDays(days) {
+  const date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
 }
 
 export function transformDateForInput(dateISO) {
