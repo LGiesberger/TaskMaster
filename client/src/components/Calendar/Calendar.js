@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { getAllDatesAction } from '../../redux/actions/calendarActions';
 
 export default function CalendarPage() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const date = new Date();
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
@@ -23,8 +23,8 @@ export default function CalendarPage() {
   }
 
   useEffect(() => {
-    dispatch(getAllDatesAction(month))
-  }, [])
+    dispatch(getAllDatesAction(month));
+  }, []);
 
   return (
     <div>
@@ -39,7 +39,7 @@ export default function CalendarPage() {
             return (
               <button
                 key={date.getDate()}
-                className={}
+                className="calendar-tile"
                 onClick={() => handleClick(date)}
               >
                 {date.getDate()}

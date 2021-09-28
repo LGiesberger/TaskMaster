@@ -2,7 +2,8 @@ import {
   getAllTasksForDay,
   createTask,
   deleteTask,
-  setCompletedProp,
+  setTask,
+  CompletedProp,
   editTask,
 } from '../../api/api';
 

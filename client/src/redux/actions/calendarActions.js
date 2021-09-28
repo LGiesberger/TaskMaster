@@ -1,3 +1,5 @@
+import { getAllDates, setDateCompletedProp } from '../../api/api';
+
 export const getAllDatesAction = (month) => {
   return async (dispatch) => {
     const dates = await getAllDates(month);
@@ -7,7 +9,7 @@ export const getAllDatesAction = (month) => {
 
 export const completeDateAction = (numericalDate) => {
   return async (dispatch) => {
-    const date = await completeDate(numericalDate);
+    const date = await setDateCompletedProp(numericalDate);
     dispatch({ type: 'COMPLETE_DATE', payload: date });
   };
 };
