@@ -16,6 +16,16 @@ controller.getTask = async function (req, res) {
   }
 };
 
+controller.getAllTasks = async function (req, res) {
+  try {
+    const tasks = await Task.find();
+    res.status(200).send(tasks);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Database error while retrieving all tasks');
+  }
+};
+
 // Post requests
 
 controller.getAllTasksForDay = async function (req, res) {

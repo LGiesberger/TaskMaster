@@ -2,8 +2,8 @@ const Router = require('express').Router;
 const router = Router();
 const controller = require('./controllers/index');
 
-// router.get('/days', controller.getAllDays);
 router.get('/edit/:taskId', controller.getTask);
+router.get('/tasks/all', controller.getAllTasks);
 router.post('/task', controller.createTask);
 router.post('/tasks', controller.getAllTasksForDay);
 router.put('/tasks/:taskId', controller.editTask);

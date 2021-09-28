@@ -14,6 +14,12 @@ export function getAllTasksForDay(numericalDate) {
   }).then((res) => res.json());
 }
 
+export function getAllTasks() {
+  return fetch(`${SERVER_URL}/tasks/all`, {
+    method: 'GET',
+  }).then((res) => res.json());
+}
+
 export function createTask(title, date) {
   return fetch(`${SERVER_URL}/task`, {
     method: 'POST',
