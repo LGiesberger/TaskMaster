@@ -1,4 +1,9 @@
-import { getDates, formatMonth, numerifyDate } from '../../utils/utils';
+import {
+  getDates,
+  createFirstAndLastDates,
+  formatMonth,
+  numerifyDate,
+} from '../../utils/utils';
 import rightArrowIcon from '../../images/chevron-right-solid.svg';
 import leftArrowIcon from '../../images/chevron-left-solid.svg';
 import { useEffect, useState } from 'react';
@@ -32,7 +37,8 @@ export default function Calendar() {
   }
 
   useEffect(() => {
-    setDates(getDates(month, year));
+    const { first, last } = createFirstAndLastDates(month, year);
+    setDates(getDates(month, year, first, last));
   }, [month, year]);
 
   return (
@@ -43,7 +49,7 @@ export default function Calendar() {
           alt="arrow icon left"
           onClick={handlePrevious}
         />
-        <h4 className="header-title">{formatMonth(date)}</h4>
+        <h4 className="header-title">{formatMonth(dates[7])}</h4>
         <img src={rightArrowIcon} alt="arrow icon right" onClick={handleNext} />
       </div>
       <div className="calendar">
@@ -60,9 +66,10 @@ export default function Calendar() {
           {dates.map((date) => {
             return (
               <button
-                key={date.getDate()}
+                key={numerifyDate(date)}
                 className={
-                  date.getDate() === new Date().getDate()
+                  date.getDate() === new Date().getDate() &&
+                  date.getMonth() === new Date().getMonth()
                     ? 'calendar-tile today'
                     : 'calendar-tile'
                 }

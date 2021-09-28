@@ -34,7 +34,17 @@ export function prettifyTime(date) {
   );
 }
 
-export function getDates(month, year) {
+export function createFirstAndLastDates(month, year) {
+  const gotDates = getDates(month, year);
+  const first = gotDates[0].getDay() - 1;
+  const last =
+    gotDates[gotDates.length - 1].getDay() === 0
+      ? 0
+      : 7 - gotDates[gotDates.length - 1].getDay();
+  return { first, last };
+}
+
+export function getDates(month, year, firstAmount, secondAmount) {
   const dates = [];
   const startDate = new Date(year, month, 1);
   const endDate =
@@ -42,11 +52,25 @@ export function getDates(month, year) {
       ? new Date(year + 1, 0, 0)
       : new Date(year, month + 1, 0);
   let currentDate = startDate;
+  let firstLastDay = startDate;
+  let lastLastDay = endDate;
 
   while (currentDate <= endDate) {
     dates.push(currentDate);
     currentDate = addDays.call(currentDate, 1);
   }
+
+  while (firstAmount > 0) {
+    firstLastDay = addDays.call(firstLastDay, -1);
+    dates.unshift(firstLastDay);
+    firstAmount--;
+  }
+  while (secondAmount > 0) {
+    lastLastDay = addDays.call(lastLastDay, 1);
+    dates.push(lastLastDay);
+    secondAmount--;
+  }
+
   return dates;
 }
 

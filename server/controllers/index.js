@@ -11,7 +11,6 @@ controller.getTask = async function (req, res) {
     const task = await Task.findById(taskId);
     res.status(200).send(task);
   } catch (err) {
-    console.log(err);
     res.status(500).send('Database error while retrieving task');
   }
 };
@@ -21,7 +20,6 @@ controller.getAllTasks = async function (req, res) {
     const tasks = await Task.find();
     res.status(200).send(tasks);
   } catch (err) {
-    console.log(err);
     res.status(500).send('Database error while retrieving all tasks');
   }
 };
@@ -34,7 +32,6 @@ controller.getAllTasksForDay = async function (req, res) {
     const tasks = await Task.find({ numericalDate: numericalDate });
     res.status(200).send(tasks);
   } catch (err) {
-    console.log(err);
     res
       .status(500)
       .send(
@@ -54,7 +51,6 @@ controller.createTask = async function (req, res) {
     });
     res.status(201).send(newTask);
   } catch (err) {
-    console.log(err);
     res
       .status(500)
       .send('There was a database error while creating your task.');
@@ -79,7 +75,6 @@ controller.editTask = async function (req, res) {
     );
     res.status(200).send(selectedTask);
   } catch (err) {
-    console.log(err);
     res.status(500).send('There was a database error while updating the task');
   }
 };
@@ -98,7 +93,6 @@ controller.setCompletedProp = async function (req, res) {
     );
     res.status(200).send(selectedTask);
   } catch (err) {
-    console.log(err);
     res
       .status(500)
       .send(
@@ -116,7 +110,6 @@ controller.deleteTask = async function (req, res) {
     await Task.findByIdAndDelete(taskId);
     res.status(204);
   } catch (err) {
-    console.log(err);
     res.status(500).send('There was a database error while deleting the task.');
   }
 };

@@ -55,7 +55,6 @@ export default function CreationPage() {
             </label>
             <input
               onChange={({ target }) => {
-                console.log(target.value);
                 setState((prevState) => {
                   return { ...prevState, date: target.value };
                 });

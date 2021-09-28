@@ -27,7 +27,6 @@ export const createTaskAction = ({ title, date }) => {
 };
 
 export const editTaskAction = ({ taskId, title, date }) => {
-  console.log(taskId, title, date);
   return async (dispatch) => {
     await editTask(taskId, title, date);
     dispatch({
