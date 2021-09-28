@@ -47,9 +47,11 @@ export default function EditPage() {
               className="edit-input"
               value={state.title}
             />
-            <label>When are you planning to do this?</label>
+            <label className="edit-input-label">
+              When are you planning to do this?
+            </label>
             <input
-              className="edit-input"
+              className="edit-input datetime"
               type="datetime-local"
               value={state.date}
               onChange={({ target }) => {

@@ -9,10 +9,12 @@
 }
 
 .edit-header {
+  height: 7vh;
   padding: 10px 0;
   display: flex;
   width: 100%;
   justify-content: center;
+  box-shadow: 0px 1px 10px 1px rgb(0 0 0 / 25%);
 }
 
 .edit-title {
@@ -21,7 +23,7 @@
 
 .edit-body {
   height: 40vh;
-  padding: 20px 10px;
+  padding: 20px 0;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-size: 15px;
@@ -34,7 +36,8 @@
 
 .edit-input-label {
   font-size: 15px;
-  color: #7a7a7a;
+  color: #8b8b8b;
+  padding: 0 10px;
 }
 
 .edit-input {
@@ -48,6 +51,7 @@
   font-size: 17px;
   outline: none;
   color: rgb(70, 70, 70);
+  background: none;
 }
 
 .edit-button {
@@ -64,4 +68,8 @@
   width: 7%;
   position: absolute;
   right: 10px;
+}
+
+.datetime {
+  height: 20%;
 }

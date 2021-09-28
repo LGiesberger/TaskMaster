@@ -40,7 +40,9 @@ export default function App() {
           alt="arrow icon left"
           onClick={() => dispatch(previousDayAction(numericalDate))}
         />
+
         <h4 className="header-title">{prettyDate}</h4>
+
         <img
           src={rightArrowIcon}
           alt="arrow icon right"
@@ -48,20 +50,24 @@ export default function App() {
         />
       </div>
       <div className="dashboard-body">
-        <div className="lists">
-          {tasks.length ? (
-            <div>
-              <TaskList tasks={completedTasks} listTitle={'Completed'} />
-              <TaskList tasks={ongoingTasks} listTitle={'Ongoing'} />
-            </div>
-          ) : (
-            <div>
-              <h4 className="empty-title">
-                You haven't planned any tasks for this day yet!
-              </h4>
-            </div>
-          )}
+        <div className="calendar-button-container">
+          <Link to="/calendar">
+            <button className="calendar-button">Calendar</button>
+          </Link>
         </div>
+
+        {tasks.length ? (
+          <div className="lists">
+            <TaskList tasks={completedTasks} listTitle={'Completed'} />
+            <TaskList tasks={ongoingTasks} listTitle={'Ongoing'} />
+          </div>
+        ) : (
+          <div>
+            <h4 className="empty-title">
+              You haven't planned any tasks for this day yet!
+            </h4>
+          </div>
+        )}
         <div className="footer">
           <Link to="/create">
             <img className="icon" src={plusSignIcon} alt="plus icon"></img>

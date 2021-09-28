@@ -8,6 +8,7 @@
   justify-content: space-between;
   padding: 3%;
   position: relative;
+  box-shadow: 0px 1px 10px 1px rgb(0 0 0 / 25%);
 }
 
 .header-title,
@@ -26,6 +27,7 @@
   height: 93vh;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .footer {
@@ -37,4 +39,35 @@
 
 .footer .icon {
   width: 50px;
+}
+
+.calendar-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  top: 0;
+  position: absolute;
+}
+
+.calendar-button-container a {
+  width: 100%;
+  text-align: center;
+}
+
+.calendar-button {
+  background-color: slateblue;
+  border: none;
+  padding: 5px 30px;
+  border-radius: 0 0 5px 5px;
+  color: #fff;
+  width: 50%;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.lists {
+  padding-top: 50px;
 }

@@ -61,7 +61,7 @@ export default function CreationPage() {
                 });
               }}
               type="datetime-local"
-              className="creation-input"
+              className="creation-input datetime"
               value={state.date}
             />
             <button className="creation-button" type="submit">
