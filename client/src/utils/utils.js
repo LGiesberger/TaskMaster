@@ -4,6 +4,12 @@ export function numerifyDate(dateISO) {
   return moment(dateISO).format('YYYYMMDD'); // Example: 20210927
 }
 
+export function numericToISO(numericalDate) {
+  const string =
+    typeof numericalDate === 'number' ? String(numericalDate) : numericalDate;
+  return moment(string).format();
+}
+
 export function prettifyDate(numericalDate) {
   return moment(numericalDate).format('MMMM Do'); // Example: September 27th
 }
@@ -28,11 +34,16 @@ export function prettifyTime(date) {
   );
 }
 
-export function getDates(start, end) {
+export function getDates(month, year) {
   const dates = [];
-  let currentDate = start;
+  const startDate = new Date(year, month, 1);
+  const endDate =
+    startDate.getMonth === 11
+      ? new Date(year + 1, 0, 0)
+      : new Date(year, month + 1, 0);
+  let currentDate = startDate;
 
-  while (currentDate <= end) {
+  while (currentDate <= endDate) {
     dates.push(currentDate);
     currentDate = addDays.call(currentDate, 1);
   }
@@ -65,4 +76,4 @@ export function transformDateForInput(dateISO) {
     .slice(0, -8);
 }
 
-// This function formats the dates in a way that will allow me to set the default value for the input fields on the creation and edit pages, including the correct timezoneOffset.
+// Dates are a tricky topic, hency why I'm choosing to not mess around with them too much, this function formats the dates in a way that will allow me to set the default value for the input fields on the creation and edit pages, including the correct timezoneOffset.
