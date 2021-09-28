@@ -22,10 +22,6 @@ export default function CalendarPage() {
     // Button click functionality
   }
 
-  useEffect(() => {
-    dispatch(getAllDatesAction(month));
-  }, []);
-
   return (
     <div>
       <div className="header">

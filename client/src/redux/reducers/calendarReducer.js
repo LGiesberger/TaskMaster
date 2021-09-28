@@ -3,7 +3,9 @@ const calendarReducer = (state = [], action) => {
     case 'GET_DATES':
       return action.payload.concat(state);
     case 'COMPLETE_DATE':
-      return [date].concat(state);
+      return [action.date].concat(state);
+    default:
+      return state;
   }
 };
 

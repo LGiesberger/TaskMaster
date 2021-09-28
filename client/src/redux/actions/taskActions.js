@@ -2,8 +2,7 @@ import {
   getAllTasksForDay,
   createTask,
   deleteTask,
-  setTask,
-  CompletedProp,
+  setTaskCompletedProp,
   editTask,
 } from '../../api/api';
 
@@ -40,7 +39,7 @@ export const editTaskAction = ({ taskId, title, date }) => {
 
 export const changeStatusAction = (taskId) => {
   return async (dispatch) => {
-    const task = await setCompletedProp(taskId);
+    const task = await setTaskCompletedProp(taskId);
     dispatch({
       type: 'CHANGE_STATUS',
       payload: task,
