@@ -7,7 +7,7 @@ import { selectDateAction } from '../../redux/actions/dateActions';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-export default function CalendarPage() {
+export default function Calendar() {
   const date = new Date();
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());

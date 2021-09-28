@@ -1,4 +1,5 @@
 import { getAllTasksForDay } from '../../api/api';
+import { numericToISO } from '../../utils/utils';
 
 export const nextDayAction = (numericalDate) => {
   return async (dispatch) => {
@@ -15,6 +16,10 @@ export const previousDayAction = (numericalDate) => {
 export const selectDateAction = (numericalDate) => {
   return async (dispatch) => {
     const tasks = await getAllTasksForDay(numericalDate);
-    dispatch({ type: 'SELECTED_DATE', payload: tasks, date: numericalDate });
+    dispatch({
+      type: 'SELECTED_DATE',
+      payload: tasks,
+      date: numericToISO(numericalDate),
+    });
   };
 };
