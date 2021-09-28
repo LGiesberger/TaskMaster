@@ -9,7 +9,6 @@ const dateReducer = (state = new Date(), action) => {
     case 'PREVIOUS_DATE':
       return new Date(Date.parse(state) - dayInMilliseconds);
     case 'SELECTED_DATE':
-      console.log('yo', action.payload);
       return new Date(action.date);
     default:
       return state;

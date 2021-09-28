@@ -1,0 +1,24 @@
+.calendar-tile {
+  min-width: 14.2857%;
+  max-width: 14.2857%;
+  padding: 12% 0%;
+  border: 1px solid white;
+}
+
+.calendar-tile.completed {
+  background-color: rgb(4, 189, 4);
+}
+
+.calendar-tile.incomplete {
+  background-color: rgb(224, 10, 10);
+}
+
+.calendar-tile.empty {
+  background-color: rgb(135, 212, 243);
+}
+
+.month-title {
+  color: rgb(170, 170, 170);
+  margin: 20px 2% 10px 2%;
+  font-weight: 600;
+}

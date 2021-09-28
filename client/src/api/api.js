@@ -28,7 +28,7 @@ export function deleteTask(taskId) {
   });
 }
 
-export function setCompletedProp(taskId) {
+export function setTaskCompletedProp(taskId) {
   return fetch(`${SERVER_URL}/tasks/${taskId}/status`, {
     method: 'PUT',
   }).then((res) => res.json());
@@ -39,5 +39,19 @@ export function editTask(taskId, newTitle, date) {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ newTitle, date }),
+  });
+}
+
+export function getAllDates(month) {
+  fetch(`${SERVER_URL}/calendar/${month}`, {
+    method: 'GET',
+  });
+}
+
+export function setDateCompletedProp(numericalDate) {
+  fetch(`${SERVER_URL}/calendar`, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify({ numericalDate }),
   });
 }

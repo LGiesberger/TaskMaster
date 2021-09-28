@@ -39,27 +39,6 @@ export function getDates(start, end) {
   return dates;
 }
 
-export function sortDates(dates) {
-  const datesObj = {
-    0: [],
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-    5: [],
-    6: [],
-    7: [],
-    8: [],
-    9: [],
-    10: [],
-    11: [],
-  };
-  dates.forEach((date) => {
-    datesObj[date.getMonth()].push(date);
-  });
-  return datesObj;
-}
-
 export function formatMonth(date) {
   const options = { month: 'long' };
   return new Intl.DateTimeFormat('en-US', options).format(date);
