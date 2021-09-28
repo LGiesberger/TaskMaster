@@ -65,4 +65,4 @@ export function transformDateForInput(dateISO) {
     .slice(0, -8);
 }
 
-// Dates are a tricky topic, hency why I'm choosing to not mess around with them too much, this function formats the dates in a way that will allow me to set the default value for the input fields on the creation and edit pages, including the correct timezoneOffset.
+// This function formats the dates in a way that will allow me to set the default value for the input fields on the creation and edit pages, including the correct timezoneOffset.

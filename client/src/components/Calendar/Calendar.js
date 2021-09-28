@@ -1,10 +1,9 @@
 import { getDates, formatMonth } from '../../utils/utils';
 import rightArrowIcon from '../../images/chevron-right-solid.svg';
 import leftArrowIcon from '../../images/chevron-left-solid.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './Calendar.css';
 import { useDispatch } from 'react-redux';
-import { getAllDatesAction } from '../../redux/actions/calendarActions';
 
 export default function CalendarPage() {
   const dispatch = useDispatch();
