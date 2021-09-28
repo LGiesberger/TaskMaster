@@ -1,24 +1,29 @@
+.calendar {
+  padding: 3% 5px;
+  border-top: 1px solid #eee;
+}
+
 .calendar-tile {
   min-width: 14.2857%;
   max-width: 14.2857%;
-  padding: 12% 0%;
+  padding: 5% 0;
   border: 1px solid white;
+  font-size: 1.3em;
+  background-color: slateblue;
+  color: white;
 }
 
-.calendar-tile.completed {
-  background-color: rgb(4, 189, 4);
+.today {
+  background-color: #5084e1;
 }
 
-.calendar-tile.incomplete {
-  background-color: rgb(224, 10, 10);
+.weekdays {
+  margin: 8px 0;
 }
 
-.calendar-tile.empty {
-  background-color: rgb(135, 212, 243);
-}
-
-.month-title {
-  color: rgb(170, 170, 170);
-  margin: 20px 2% 10px 2%;
-  font-weight: 600;
+.weekday {
+  min-width: 14.2857%;
+  max-width: 14.2857%;
+  text-align: center;
+  display: inline-block;
 }
