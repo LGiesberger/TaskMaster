@@ -23,18 +23,18 @@ The current date will be highlighted, users can click on any date and the app wi
 - Web browser (ex: Google Chrome)
 - Mongod (v5.0.2) installed on your machine
 
-Application-wide:
+**Application-wide:**
 
 1. Open the project folder.
 2. Run `npm i` in your terminal.
 
-Back end:
+**Back end:**
 
 1. Move into the server folder
 2. Run `npm i` in your terminal.
 3. Start the server by running `npx nodemon` in your terminal
 
-Front end:
+**Front end:**
 
 1. Move into the client folder
 2. Run `npm i` in your terminal.
@@ -43,8 +43,10 @@ Front end:
 
 ### Tech stack
 
-TaskMaster has been created using:
-**Front-end**: React as the framework and redux to manage the state
-**Back-end**: Express as the framework for the server and MongoDB for the database, using Mongoose as my ORM.
+TaskMaster has been created using: </br>
+**Front-end**: React as the framework and redux to manage the state</br>
+**Back-end**: Express as the framework for the server and MongoDB for the database, using Mongoose as my ORM.</br>
+
+### Closing statement
 
 The app's current features are quite limited, I intend to continue working on it in the nearby future to expand upon them, but for now this is the final version I will be submitting.
