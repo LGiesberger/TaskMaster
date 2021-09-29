@@ -3,7 +3,7 @@ const taskReducer = (state = [], action) => {
     case 'GET_ALL_TASKS':
       return action.payload;
     case 'CREATE_TASK':
-      return [action.payload].concat(state);
+      return [action.payload].concat(state); // new task, concatenated with the state arrays
     case 'EDIT_TASK':
       return state.map((task) => ({
         ...task,
@@ -19,9 +19,9 @@ const taskReducer = (state = [], action) => {
         ...task,
         completed:
           task._id === action.payload._id ? !task.completed : task.completed,
-      }));
+      })); // invert the task's completed property
     case 'DELETE_TASK':
-      return state.filter((task) => task._id !== action.taskId);
+      return state.filter((task) => task._id !== action.taskId); // return all tasks without the deleted
     default:
       return state;
   }

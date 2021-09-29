@@ -14,20 +14,12 @@ import { prettifyTime } from '../../utils/utils';
 export default function Task({ task }) {
   const dispatch = useDispatch();
 
-  function handleStatusChange(taskId) {
-    dispatch(changeStatusAction(taskId));
-  }
-
-  function handleDelete(taskId) {
-    dispatch(deleteTaskAction(taskId));
-  }
-
   return (
     <div className="task">
       <div className="left-container">
         <img
           src={task.completed ? checkIcon : circleIcon}
-          onClick={() => handleStatusChange(task._id)}
+          onClick={() => dispatch(changeStatusAction(task._id))}
           className="status-icon"
           alt={task.completed ? 'completed icon' : 'not completed icon'}
         />
@@ -56,7 +48,7 @@ export default function Task({ task }) {
           src={trashIcon}
           className="trash-icon"
           alt="delete icon"
-          onClick={() => handleDelete(task._id)}
+          onClick={() => dispatch(deleteTaskAction(task._id))}
         />
         {prettifyTime(task.date)}
       </div>

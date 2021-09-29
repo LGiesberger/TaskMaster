@@ -1,9 +1,4 @@
-import {
-  getDates,
-  createFirstAndLastDates,
-  formatMonth,
-  numerifyDate,
-} from '../../utils/utils';
+import { getDates, formatMonth, numerifyDate } from '../../utils/utils';
 import rightArrowIcon from '../../images/chevron-right-solid.svg';
 import leftArrowIcon from '../../images/chevron-left-solid.svg';
 import { useEffect, useState } from 'react';
@@ -37,8 +32,7 @@ export default function Calendar() {
   }
 
   useEffect(() => {
-    const { first, last } = createFirstAndLastDates(month, year);
-    setDates(getDates(month, year, first, last));
+    setDates(getDates(month, year));
   }, [month, year]);
 
   return (

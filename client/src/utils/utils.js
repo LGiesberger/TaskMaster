@@ -7,7 +7,7 @@ export function numerifyDate(dateISO) {
 export function numericToISO(numericalDate) {
   const string =
     typeof numericalDate === 'number' ? String(numericalDate) : numericalDate;
-  return moment(string).format();
+  return moment(string).format(); // '20210927  --> full date September 21st, 2021'
 }
 
 export function prettifyDate(numericalDate) {
@@ -33,50 +33,51 @@ export function prettifyTime(date) {
     </div>
   );
 }
+// example:
+// 11:30
+// AM
 
-export function createFirstAndLastDates(month, year) {
-  const gotDates = getDates(month, year);
-  const first = gotDates[0].getDay() - 1;
-  const last =
-    gotDates[gotDates.length - 1].getDay() === 0
-      ? 0
-      : 7 - gotDates[gotDates.length - 1].getDay();
-  return { first, last };
-}
-
-export function getDates(month, year, firstAmount, secondAmount) {
+export function getDates(month, year) {
   const dates = [];
   const startDate = new Date(year, month, 1);
   const endDate =
-    startDate.getMonth === 11
-      ? new Date(year + 1, 0, 0)
-      : new Date(year, month + 1, 0);
+    startDate.getMonth === 11 // if month = december
+      ? new Date(year + 1, 0, 0) // endDate is the last date of the current year
+      : new Date(year, month + 1, 0); // endDate is the last date of the current month
+  let first = startDate.getDay() - 1; // get the current day, which returns a 0-based number, 0 being sunday, hency why the variable needs to be subtracted by 1
+  let last = endDate.getDay() === 0 ? 0 : 7 - endDate.getDay(); // if getDay() is 0, the last date is a sunday, in which case we don't need any extra dates
   let currentDate = startDate;
   let firstLastDay = startDate;
   let lastLastDay = endDate;
 
+  // Load all dates in a month
   while (currentDate <= endDate) {
     dates.push(currentDate);
     currentDate = addDays.call(currentDate, 1);
   }
 
-  while (firstAmount > 0) {
+  // Load all dates before the first day of the month, based on the number of days
+  while (first > 0) {
     firstLastDay = addDays.call(firstLastDay, -1);
     dates.unshift(firstLastDay);
-    firstAmount--;
+    first--;
   }
-  while (secondAmount > 0) {
+
+  // Load all dates after the last day of the month, based on the number of days
+  while (last > 0) {
     lastLastDay = addDays.call(lastLastDay, 1);
     dates.push(lastLastDay);
-    secondAmount--;
+    last--;
   }
 
   return dates;
+  // dates is an array of objects between startDate - first and endDate + last
 }
 
 export function formatMonth(date) {
   const options = { month: 'long' };
   return new Intl.DateTimeFormat('en-US', options).format(date);
+  // example: September
 }
 
 function addTwelveHours(date) {

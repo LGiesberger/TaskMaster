@@ -84,14 +84,14 @@ controller.setCompletedProp = async function (req, res) {
   try {
     const taskId = req.params.taskId;
     const selectedTask = await Task.findById(taskId);
-    await Task.findByIdAndUpdate(
+    const changedTask = await Task.findByIdAndUpdate(
       taskId,
       {
         completed: !selectedTask.completed,
       },
       { new: true }
     );
-    res.status(200).send(selectedTask);
+    res.status(200).send(changedTask);
   } catch (err) {
     res
       .status(500)
