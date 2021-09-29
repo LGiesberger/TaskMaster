@@ -43,7 +43,7 @@ The current date will be highlighted, users can click on any date and the app wi
 
 ### Tech stack
 
-TaskMaster has been created using: </br>
+TaskMaster has been created using: </br></br>
 **Front-end**: React as the framework and redux to manage the state</br>
 **Back-end**: Express as the framework for the server and MongoDB for the database, using Mongoose as my ORM.</br>
 
