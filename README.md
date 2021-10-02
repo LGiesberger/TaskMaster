@@ -49,4 +49,4 @@ TaskMaster has been created using: </br>
 
 ### Closing statement
 
-The app's current features are quite limited, I intend to continue working on it in the nearby future to expand upon them, but for now this is the final version I will be submitting.
+The app's current features are quite limited, it was built in 7 days as the final project to finish up the 8 week Web Development bootcamp I was in. The main focus of this project was to showcase the application, hence why I focused on styling and creating as many features as possible.
