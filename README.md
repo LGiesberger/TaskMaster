@@ -22,7 +22,7 @@ The current date will be highlighted, users can click on any date and the app wi
 
 - Code editor (ex: VS Code)
 - Web browser (ex: Google Chrome)
-- Mongod (v5.0.2) installed on your machine
+- Mongod (v5.0.2) installed on your machine (don't forget to launch the database service from your terminal).
 
 **Application-wide:**
 
