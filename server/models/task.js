@@ -6,7 +6,6 @@ const taskSchema = new Schema({
   completed: { type: Boolean, required: true },
   date: { type: Date, required: true },
   numericalDate: { type: Number, required: true },
-  user: { type: Schema.Types.ObjectId, ref: 'Users' },
 });
 
 module.exports = mongoose.model('Tasks', taskSchema);
