@@ -7,6 +7,7 @@ TaskMaster is a task scheduling tool, created with the sole purpose of bringing 
 Upon loading the application, users will be shown the tasks for the current date. **(See screenshot 1)**</br></br>
 Users can then click on the purple button at the bottom to add a new task to their list, the default selected date will be the current date and time so the user doesn't have to enter this himself. **(See screenshot 2)**</br></br>
 Should the user have completed a task, they can change the status by clicking on the icon on the left of the title. **(See screenshot 3)**</br></br>
+The user can also edit the title of their task or the date/time it has been scheduled on by clicking on the pencil icon, should it be desired a task can also be removed by clicking on the trashcan icon.</br></br>
 Users can scroll ahead/back to other dates by using the arrows at the top left and right of the task-overview. Or if they need to look at a more specific date that will require a lot of scrolling, they can click on the 'Calendar' button to speed up this process.</br></br>
 The current date will be highlighted, users can click on any date and the app will take them straight there. **(See screenshot 4)**</br>
 
@@ -21,7 +22,7 @@ The current date will be highlighted, users can click on any date and the app wi
 
 - Code editor (ex: VS Code)
 - Web browser (ex: Google Chrome)
-- Mongod (v5.0.2) installed on your machine
+- Mongod (v5.0.2) installed on your machine (don't forget to launch the database service from your terminal).
 
 **Application-wide:**
 
@@ -43,7 +44,7 @@ The current date will be highlighted, users can click on any date and the app wi
 
 ### Tech stack
 
-TaskMaster has been created using: </br>
+TaskMaster has been created using: </br></br>
 **Front-end**: React as the framework and redux to manage the state</br>
 **Back-end**: Express as the framework for the server and MongoDB for the database, using Mongoose as my ORM.</br>
 
