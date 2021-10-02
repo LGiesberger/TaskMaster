@@ -1,5 +1,8 @@
 const Task = require('../models/task');
+const User = require('../models/user');
 const moment = require('moment');
+const jwt = require('jsonwebtoken');
+const accessTokenSecret = 'amazingsecrettoken';
 
 const controller = {};
 
@@ -54,6 +57,43 @@ controller.createTask = async function (req, res) {
     res
       .status(500)
       .send('There was a database error while creating your task.');
+  }
+};
+
+controller.registerUser = async function (req, res) {
+  try {
+    const { username, password, email, firstName } = req.body;
+    const user = await User.create({
+      username,
+      password,
+      email,
+      first_name: firstName,
+    });
+    const accessToken = jwt.sign({ uid: user._id }, accessTokenSecret);
+    res.status(201).json({ accessToken });
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .send('There was a database error while registering your account.');
+  }
+};
+
+controller.loginUser = async function (req, res) {
+  try {
+    const { username, password } = req.body;
+    const user = Users.findOne({ username, password });
+    if (user) {
+      const accessToken = jwt.sign({ uid: user._id }, accessTokenSecret);
+      res.status(201).json({ accessToken });
+    } else {
+      res.status(401).send('Invalid credentials');
+    }
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .send('There was a database error while logging this user in.');
   }
 };
 
