@@ -32,7 +32,14 @@ controller.getAllTasks = async function (req, res) {
 controller.getAllTasksForDay = async function (req, res) {
   try {
     const { numericalDate } = req.body;
-    const tasks = await Task.find({ numericalDate: numericalDate });
+    // retrieve user_id from jwt
+    const tasks = await Task.find({
+      user_id,
+      numericalDate: numericalDate,
+    }).populate({
+      path: 'tasks',
+      select: 'title completed date numericalDate',
+    });
     res.status(200).send(tasks);
   } catch (err) {
     res
@@ -46,11 +53,13 @@ controller.getAllTasksForDay = async function (req, res) {
 controller.createTask = async function (req, res) {
   try {
     const { title, date } = req.body;
+    // retrieve user_id from jwt
     const newTask = await Task.create({
       title: title,
       completed: false,
       date,
       numericalDate: moment(date).format('YYYYMMDD'),
+      user_id,
     });
     res.status(201).send(newTask);
   } catch (err) {

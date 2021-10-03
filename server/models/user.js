@@ -6,7 +6,15 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   email: { type: String, required: true },
   first_name: { type: String, required: true },
-  tasks: { type: Schema.Types.ObjectId, ref: 'Tasks' },
 });
 
-module.exports = mongoose.model('Users', userSchema);
+userSchema.virtual('tasks', {
+  ref: 'User',
+  localField: '_id',
+  foreignField: 'user',
+});
+
+userSchema.set('toObject', { virtuals: true });
+userSchema.set('toJSON', { virtuals: true });
+
+module.exports = mongoose.model('User', userSchema);
