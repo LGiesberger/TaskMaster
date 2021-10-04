@@ -35,7 +35,7 @@ controller.getAllTasksForDay = async function (req, res) {
     // retrieve user_id from jwt
     const tasks = await Task.find({
       user_id,
-      numericalDate: numericalDate,
+      numericalDate,
     }).populate({
       path: 'tasks',
       select: 'title completed date numericalDate',

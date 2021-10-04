@@ -4,9 +4,9 @@ const controller = require('./controllers/index');
 
 router.get('/edit/:taskId', controller.getTask);
 router.get('/tasks/all', controller.getAllTasks);
-router.post('/task', controller.createTask);
 router.post('/register', controller.registerUser);
 router.post('/login', controller.loginUser);
+router.post('/task', controller.createTask);
 router.post('/tasks', controller.getAllTasksForDay);
 router.put('/tasks/:taskId', controller.editTask);
 router.put('/tasks/:taskId/status', controller.setCompletedProp);
