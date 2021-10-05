@@ -3,6 +3,8 @@ const User = require('../models/user');
 const moment = require('moment');
 const jwt = require('jsonwebtoken');
 const accessTokenSecret = 'amazingsecrettoken';
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const controller = {};
 
@@ -21,7 +23,12 @@ controller.getTask = async function (req, res) {
 
 controller.getAllTasks = async function (req, res) {
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find({
+      user: '615c24381107cfb14d2224d6',
+    }).populate({
+      path: 'user',
+      select: 'email password first_name',
+    });
     res.status(200).send(tasks);
   } catch (err) {
     console.log(err);
@@ -40,7 +47,7 @@ controller.getAllTasksForDay = async function (req, res) {
       numericalDate,
     }).populate({
       path: 'user',
-      select: 'username password email first_name',
+      select: 'email password first_name',
     });
     res.status(200).send(tasks);
   } catch (err) {
@@ -58,7 +65,7 @@ controller.createTask = async function (req, res) {
     const { title, date } = req.body;
     // retrieve user_id from jwt
     const newTask = await Task.create({
-      title: title,
+      title,
       completed: false,
       date,
       numericalDate: moment(date).format('YYYYMMDD'),
@@ -76,14 +83,25 @@ controller.createTask = async function (req, res) {
 controller.registerUser = async function (req, res) {
   try {
     const { username, password, email, firstName } = req.body;
-    const user = await User.create({
-      username,
-      password,
-      email,
-      first_name: firstName,
-    });
-    const accessToken = jwt.sign({ uid: user._id }, accessTokenSecret);
-    res.status(201).json({ accessToken });
+    const existingUser = await User.findOne({ email });
+    if (existingUser)
+      res.send('This emailaddress is taken, please use another');
+    else {
+      bcrypt.hash(password, saltRounds, async (err, hash) => {
+        if (err) {
+          console.log(err);
+        } else {
+          const user = await User.create({
+            username,
+            password: hash,
+            email,
+            firstName,
+          });
+          const accessToken = jwt.sign({ uid: user._id }, accessTokenSecret);
+          res.status(201).json({ accessToken });
+        }
+      });
+    }
   } catch (err) {
     console.log(err);
     res
@@ -95,13 +113,17 @@ controller.registerUser = async function (req, res) {
 controller.loginUser = async function (req, res) {
   try {
     const { username, password } = req.body;
-    const user = Users.findOne({ username, password });
-    if (user) {
-      const accessToken = jwt.sign({ uid: user._id }, accessTokenSecret);
-      res.status(201).json({ accessToken });
-    } else {
-      res.status(401).send('Invalid credentials');
-    }
+    const user = await User.findOne({ username });
+    bcrypt.compare(password, user.password, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else if (result) {
+        const accessToken = jwt.sign({ uid: user._id }, accessTokenSecret);
+        res.status(201).json({ accessToken });
+      } else {
+        res.status(401).send('Invalid credentials');
+      }
+    });
   } catch (err) {
     console.log(err);
     res
