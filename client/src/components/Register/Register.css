@@ -1,14 +1,14 @@
-.creation {
+.register {
   max-width: 100vw;
   height: 100vh;
 }
 
-.creation-content {
+.register-content {
   background-color: #fff;
   border-radius: 5px;
 }
 
-.creation-header {
+.register-header {
   height: 7vh;
   padding: 10px 0;
   display: flex;
@@ -17,11 +17,11 @@
   box-shadow: 0px 1px 10px 1px rgb(0 0 0 / 25%);
 }
 
-.creation-title {
+.register-title {
   font-weight: 500;
 }
 
-.creation-body {
+.register-body {
   height: 40vh;
   padding: 20px 0;
   border-top: 1px solid #eee;
@@ -29,19 +29,19 @@
   font-size: 15px;
 }
 
-.creation-form {
+.register-form {
   height: 100%;
 }
 
-.creation-input-label {
+.register-input-label {
   font-size: 15px;
   color: #8b8b8b;
   padding: 0 10px;
 }
 
-.creation-input {
+.register-input {
   width: 94%;
-  height: 30%;
+  height: 20%;
   margin: 20px 3%;
   border-bottom: 1px solid rgb(204, 204, 204);
   border-top: none;
@@ -53,24 +53,15 @@
   background: none;
 }
 
-.creation-button {
+.register-button {
   border: none;
   background-color: slateblue;
   width: 100%;
   padding: 10px 0;
   font-size: 17px;
   color: #fff;
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
-}
-
-.creation .close-icon {
-  width: 7%;
-  position: absolute;
-  right: 10px;
-}
-
-.datetime {
-  height: 20%;
 }

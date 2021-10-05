@@ -4,7 +4,7 @@ import {
   deleteTask,
   setTaskCompletedProp,
   editTask,
-} from '../../api/api';
+} from '../../api/task-api';
 
 export const getAllTasksAction = (numericalDate) => {
   return async (dispatch) => {

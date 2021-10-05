@@ -1,4 +1,4 @@
-import { getAllTasksForDay } from '../../api/api';
+import { getAllTasksForDay } from '../../api/task-api';
 import { numericToISO } from '../../utils/utils';
 
 export const nextDayAction = (numericalDate) => {

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreationPage from './components/CreationPage/CreationPage';
 import EditPage from './components/EditPage/EditPage';
 import Calendar from './components/Calendar/Calendar';
+import Register from './components/Register/Register';
 
 function Root({ store }) {
   return (
@@ -17,6 +18,7 @@ function Root({ store }) {
           <Route exact path="/create" component={CreationPage} />
           <Route exact path="/calendar" component={Calendar} />
           <Route exact path="/edit/:taskId" component={EditPage} />
+          <Route exact path="/register" component={Register} />
         </Switch>
       </Router>
     </Provider>

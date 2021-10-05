@@ -62,6 +62,9 @@
   font-size: 17px;
   color: #fff;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .close-icon {
