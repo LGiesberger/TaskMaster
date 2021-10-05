@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { loginUser, checkAuthentication } from '../../api/user-api';
+import setAuthenticatedAction from '../../redux/actions/userActions';
 import './Login.css';
 
 export default function Register() {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -11,9 +14,11 @@ export default function Register() {
   function handleSubmit(event) {
     event.preventDefault();
     loginUser(state).then((response) => {
+      response.auth
+        ? dispatch(setAuthenticatedAction(true))
+        : dispatch(setAuthenticatedAction(false));
       localStorage.setItem('token', response.accessToken);
     });
-    checkAuthentication();
     setState({
       username: '',
       password: '',

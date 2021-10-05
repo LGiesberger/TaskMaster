@@ -20,7 +20,5 @@ export function checkAuthentication() {
   return fetch(`${SERVER_URL}/authenticated`, {
     method: 'GET',
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+  });
 }
