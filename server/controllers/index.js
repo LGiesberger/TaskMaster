@@ -14,6 +14,7 @@ controller.getTask = async function (req, res) {
     const task = await Task.findById(taskId);
     res.status(200).send(task);
   } catch (err) {
+    console.log(err);
     res.status(500).send('Database error while retrieving task');
   }
 };
@@ -23,6 +24,7 @@ controller.getAllTasks = async function (req, res) {
     const tasks = await Task.find();
     res.status(200).send(tasks);
   } catch (err) {
+    console.log(err);
     res.status(500).send('Database error while retrieving all tasks');
   }
 };
@@ -34,14 +36,15 @@ controller.getAllTasksForDay = async function (req, res) {
     const { numericalDate } = req.body;
     // retrieve user_id from jwt
     const tasks = await Task.find({
-      user_id,
+      user: '615c24381107cfb14d2224d6',
       numericalDate,
     }).populate({
-      path: 'tasks',
-      select: 'title completed date numericalDate',
+      path: 'user',
+      select: 'username password email first_name',
     });
     res.status(200).send(tasks);
   } catch (err) {
+    console.log(err);
     res
       .status(500)
       .send(
@@ -59,10 +62,11 @@ controller.createTask = async function (req, res) {
       completed: false,
       date,
       numericalDate: moment(date).format('YYYYMMDD'),
-      user_id,
+      user: '615c24381107cfb14d2224d6',
     });
     res.status(201).send(newTask);
   } catch (err) {
+    console.log(err);
     res
       .status(500)
       .send('There was a database error while creating your task.');
@@ -124,6 +128,7 @@ controller.editTask = async function (req, res) {
     );
     res.status(200).send(selectedTask);
   } catch (err) {
+    console.log(err);
     res.status(500).send('There was a database error while updating the task');
   }
 };
@@ -142,6 +147,7 @@ controller.setCompletedProp = async function (req, res) {
     );
     res.status(200).send(changedTask);
   } catch (err) {
+    console.log(err);
     res
       .status(500)
       .send(
@@ -159,6 +165,7 @@ controller.deleteTask = async function (req, res) {
     await Task.findByIdAndDelete(taskId);
     res.status(204);
   } catch (err) {
+    console.log(err);
     res.status(500).send('There was a database error while deleting the task.');
   }
 };

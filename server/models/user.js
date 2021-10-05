@@ -9,7 +9,7 @@ const userSchema = new Schema({
 });
 
 userSchema.virtual('tasks', {
-  ref: 'User',
+  ref: 'Task',
   localField: '_id',
   foreignField: 'user',
 });
