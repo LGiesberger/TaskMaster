@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginUser } from '../../api/user-api';
+import { loginUser, checkAuthentication } from '../../api/user-api';
 import './Login.css';
 
 export default function Register() {
@@ -10,7 +10,10 @@ export default function Register() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    loginUser(state);
+    loginUser(state).then((response) => {
+      localStorage.setItem('token', response.accessToken);
+    });
+    checkAuthentication();
     setState({
       username: '',
       password: '',
@@ -35,7 +38,7 @@ export default function Register() {
     <div className="register">
       <div className="register-content">
         <div className="register-header">
-          <h4>Register</h4>
+          <h4>Login</h4>
         </div>
         <div className="register-body">
           <form className="register-form" onSubmit={handleSubmit}>

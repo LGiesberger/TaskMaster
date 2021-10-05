@@ -114,16 +114,19 @@ controller.loginUser = async function (req, res) {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    bcrypt.compare(password, user.password, (err, result) => {
-      if (err) {
-        console.log(err);
-      } else if (result) {
-        const accessToken = jwt.sign({ uid: user._id }, accessTokenSecret);
-        res.status(201).json({ accessToken });
-      } else {
-        res.status(401).send('Invalid credentials');
-      }
-    });
+    if (user) {
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (result) {
+          const accessToken = jwt.sign({ uid: user._id }, 'jwtSecret');
+          res.status(201).json({ auth: true, accessToken, user });
+        } else {
+          console.log(err);
+          res.status(401).json({ auth: false, message: 'Invalid credentials' });
+        }
+      });
+    } else {
+      res.status(401).json({ auth: false, message: 'User does not exist.' });
+    }
   } catch (err) {
     console.log(err);
     res
