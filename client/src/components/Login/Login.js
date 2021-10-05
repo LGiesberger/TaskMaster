@@ -1,23 +1,19 @@
 import { useState } from 'react';
-import { registerUser } from '../../api/user-api';
-import './Register.css';
+import { loginUser } from '../../api/user-api';
+import './Login.css';
 
 export default function Register() {
   const [state, setState] = useState({
     username: '',
     password: '',
-    email: '',
-    firstName: '',
   });
 
   function handleSubmit(event) {
     event.preventDefault();
-    registerUser(state);
+    loginUser(state);
     setState({
       username: '',
       password: '',
-      email: '',
-      firstName: '',
     });
   }
 
@@ -32,20 +28,6 @@ export default function Register() {
     setState((prevState) => ({
       ...prevState,
       password: target.value,
-    }));
-  }
-
-  function onEmailChange({ target }) {
-    setState((prevState) => ({
-      ...prevState,
-      email: target.value,
-    }));
-  }
-
-  function onFirstNameChange({ target }) {
-    setState((prevState) => ({
-      ...prevState,
-      firstName: target.value,
     }));
   }
 
@@ -70,20 +52,6 @@ export default function Register() {
               type="text"
               value={state.password}
               onChange={onPasswordChange}
-            ></input>
-            <label className="register-input-label">Email address</label>
-            <input
-              className="register-input"
-              type="text"
-              value={state.email}
-              onChange={onEmailChange}
-            ></input>
-            <label className="register-input-label">First Name</label>
-            <input
-              className="register-input"
-              type="text"
-              value={state.firstName}
-              onChange={onFirstNameChange}
             ></input>
             <button className="register-button" type="submit">
               Submit

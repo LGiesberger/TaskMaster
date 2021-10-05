@@ -1,10 +1,10 @@
 const SERVER_URL = 'http://localhost:3001';
 
-export function registerUser(credentials) {
+export function registerUser(data) {
   return fetch(`${SERVER_URL}/register`, {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify(credentials),
+    body: JSON.stringify(data),
   }).then((res) => res.json());
 }
 
