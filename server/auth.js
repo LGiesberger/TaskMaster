@@ -11,7 +11,7 @@ const authMiddleware = (req, res, next) => {
         console.log(err);
         res.json({ auth: false, message: 'You failed to authenticate' });
       } else {
-        req.uid = decoded.id;
+        req.uid = decoded.uid;
         next();
       }
     });
