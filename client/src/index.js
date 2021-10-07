@@ -20,7 +20,7 @@ function Root({ store }) {
           <PrivateRoute exact path="/create" component={CreationPage} />
           <PrivateRoute exact path="/calendar" component={Calendar} />
           <PrivateRoute exact path="/edit/:taskId" component={EditPage} />
-          <Route exact path="/register" component={Register} />
+          <PrivateRoute exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
         </Switch>
       </Router>

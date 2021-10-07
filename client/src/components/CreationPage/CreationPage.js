@@ -58,6 +58,7 @@ export default function CreationPage() {
               onChange={handleTitleChange}
               className="creation-input"
               value={state.title}
+              required
             />
             <label className="creation-input-label">
               When are you planning to do this?

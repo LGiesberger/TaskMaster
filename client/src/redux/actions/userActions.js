@@ -23,7 +23,7 @@ export function loginAction(credentials) {
 
 export function logoutAction() {
   return async (dispatch) => {
-    localStorage.clear();
+    localStorage.removeItem('token');
     dispatch({ type: 'LOGOUT', status: false });
   };
 }

@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { loginAction } from '../../redux/actions/userActions';
+import { loginAction, logoutAction } from '../../redux/actions/userActions';
 import './Login.css';
 
 export default function Login() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -19,7 +17,6 @@ export default function Login() {
       username: '',
       password: '',
     });
-    history.push('/calendar');
   }
 
   function onUsernameChange({ target }) {
@@ -36,6 +33,10 @@ export default function Login() {
     }));
   }
 
+  useEffect(() => {
+    dispatch(logoutAction());
+  }, [dispatch]);
+
   return (
     <div className="login">
       <div className="login-content">
@@ -50,6 +51,7 @@ export default function Login() {
               type="text"
               value={state.username}
               onChange={onUsernameChange}
+              required
             ></input>
             <label className="login-input-label">password</label>
             <input
@@ -57,6 +59,7 @@ export default function Login() {
               type="password"
               value={state.password}
               onChange={onPasswordChange}
+              required
             ></input>
             <button className="login-button" type="submit">
               Submit

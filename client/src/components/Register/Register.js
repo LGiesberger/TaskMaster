@@ -63,13 +63,15 @@ export default function Register() {
               type="text"
               value={state.username}
               onChange={onUsernameChange}
+              required
             ></input>
             <label className="register-input-label">password</label>
             <input
               className="register-input"
-              type="text"
+              type="password"
               value={state.password}
               onChange={onPasswordChange}
+              required
             ></input>
             <label className="register-input-label">Email address</label>
             <input
@@ -77,6 +79,8 @@ export default function Register() {
               type="text"
               value={state.email}
               onChange={onEmailChange}
+              pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+              required
             ></input>
             <label className="register-input-label">First Name</label>
             <input
@@ -84,6 +88,7 @@ export default function Register() {
               type="text"
               value={state.firstName}
               onChange={onFirstNameChange}
+              required
             ></input>
             <button className="register-button" type="submit">
               Submit
