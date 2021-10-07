@@ -14,6 +14,7 @@ export default function CreationPage() {
   const numericalDate = useSelector((state) =>
     Number(numerifyDate(state.dateReducer))
   );
+
   const dispatch = useDispatch();
   const history = useHistory();
   const defaultDateTime = transformDateForInput(
@@ -25,6 +26,18 @@ export default function CreationPage() {
     event.preventDefault();
     dispatch(createTaskAction(state));
     history.push('/');
+  }
+
+  function handleTitleChange({ target }) {
+    setState((prevState) => {
+      return { ...prevState, title: target.value };
+    });
+  }
+
+  function handleDateChange({ target }) {
+    setState((prevState) => {
+      return { ...prevState, date: target.value };
+    });
   }
 
   return (
@@ -42,11 +55,7 @@ export default function CreationPage() {
               What are you planning?
             </label>
             <textarea
-              onChange={({ target }) =>
-                setState((prevState) => {
-                  return { ...prevState, title: target.value };
-                })
-              }
+              onChange={handleTitleChange}
               className="creation-input"
               value={state.title}
             />
@@ -54,11 +63,7 @@ export default function CreationPage() {
               When are you planning to do this?
             </label>
             <input
-              onChange={({ target }) => {
-                setState((prevState) => {
-                  return { ...prevState, date: target.value };
-                });
-              }}
+              onChange={handleDateChange}
               type="datetime-local"
               className="creation-input datetime"
               value={state.date}

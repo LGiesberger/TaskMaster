@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { registerUser } from '../../api/user-api';
+import { registerAction } from '../../redux/actions/userActions';
 import './Register.css';
 
 export default function Register() {
@@ -12,7 +12,7 @@ export default function Register() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    registerUser(state);
+    registerAction(state);
     setState({
       username: '',
       password: '',

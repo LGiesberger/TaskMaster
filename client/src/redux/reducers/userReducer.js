@@ -1,7 +1,9 @@
-const userReducer = (state = false, action) => {
+const userReducer = (state = { status: false, user: {} }, action) => {
   switch (action.type) {
-    case 'IS_AUTHENTICATED':
-      return action.status;
+    case 'LOGIN':
+      return { status: action.status, user: action.user || {} };
+    case 'LOGOUT':
+      return { status: action.status, user: {} };
     default:
       return state;
   }

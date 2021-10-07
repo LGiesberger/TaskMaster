@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser, checkAuthentication } from '../../api/user-api';
-import setAuthenticatedAction from '../../redux/actions/userActions';
+import { useHistory } from 'react-router-dom';
+import { loginAction } from '../../redux/actions/userActions';
 import './Login.css';
 
-export default function Register() {
+export default function Login() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -13,16 +14,12 @@ export default function Register() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    loginUser(state).then((response) => {
-      response.auth
-        ? dispatch(setAuthenticatedAction(true))
-        : dispatch(setAuthenticatedAction(false));
-      localStorage.setItem('token', response.accessToken);
-    });
+    dispatch(loginAction(state));
     setState({
       username: '',
       password: '',
     });
+    history.push('/calendar');
   }
 
   function onUsernameChange({ target }) {
@@ -40,28 +37,28 @@ export default function Register() {
   }
 
   return (
-    <div className="register">
-      <div className="register-content">
-        <div className="register-header">
+    <div className="login">
+      <div className="login-content">
+        <div className="login-header">
           <h4>Login</h4>
         </div>
-        <div className="register-body">
-          <form className="register-form" onSubmit={handleSubmit}>
-            <label className="register-input-label">Username</label>
+        <div className="login-body">
+          <form className="login-form" onSubmit={handleSubmit}>
+            <label className="login-input-label">Username</label>
             <input
-              className="register-input"
+              className="login-input"
               type="text"
               value={state.username}
               onChange={onUsernameChange}
             ></input>
-            <label className="register-input-label">password</label>
+            <label className="login-input-label">password</label>
             <input
-              className="register-input"
-              type="text"
+              className="login-input"
+              type="password"
               value={state.password}
               onChange={onPasswordChange}
             ></input>
-            <button className="register-button" type="submit">
+            <button className="login-button" type="submit">
               Submit
             </button>
           </form>
