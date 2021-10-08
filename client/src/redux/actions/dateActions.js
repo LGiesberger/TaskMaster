@@ -1,5 +1,5 @@
 import { getAllTasksForDay } from '../../api/task-api';
-import { numericToISO } from '../../utils/utils';
+import { numericToISO } from '../../utils/dates_helper';
 
 export const nextDayAction = (numericalDate) => {
   return async (dispatch) => {

@@ -11,7 +11,7 @@ import {
   nextDayAction,
   previousDayAction,
 } from '../../redux/actions/dateActions';
-import { numerifyDate, prettifyDate } from '../../utils/utils';
+import { numerifyDate, prettifyDate } from '../../utils/dates_helper';
 
 export default function App() {
   const dispatch = useDispatch();

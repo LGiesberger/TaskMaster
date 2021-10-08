@@ -1,4 +1,4 @@
-import { getDates, formatMonth, numerifyDate } from '../../utils/utils';
+import { getDates, formatMonth, numerifyDate } from '../../utils/dates_helper';
 import rightArrowIcon from '../../images/chevron-right-solid.svg';
 import leftArrowIcon from '../../images/chevron-left-solid.svg';
 import { useEffect, useState } from 'react';
@@ -64,8 +64,8 @@ export default function Calendar() {
                 className={
                   date.getDate() === new Date().getDate() &&
                   date.getMonth() === new Date().getMonth()
-                    ? 'calendar-tile today'
-                    : 'calendar-tile'
+                    ? date.className + ' today'
+                    : date.className
                 }
                 onClick={() => handleClick(date)}
               >

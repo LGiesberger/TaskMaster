@@ -8,7 +8,7 @@ export default function authHeader(contentType) {
       Authorization: `Bearer ${token}`,
     };
   } else if (token) {
-    return { Authorization: token };
+    return { Authorization: `Bearer ${token}` };
   } else {
     return {};
   }

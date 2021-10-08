@@ -8,7 +8,7 @@ import {
   checkCurrentDate,
   numerifyDate,
   transformDateForInput,
-} from '../../utils/utils';
+} from '../../utils/dates_helper';
 
 export default function CreationPage() {
   const numericalDate = useSelector((state) =>
@@ -66,7 +66,7 @@ export default function CreationPage() {
             <input
               onChange={handleDateChange}
               type="datetime-local"
-              className="creation-input datetime"
+              className="creation-input"
               value={state.date}
             />
             <button className="creation-button" type="submit">

@@ -52,6 +52,7 @@ export function getDates(month, year) {
 
   // Load all dates in a month
   while (currentDate <= endDate) {
+    currentDate.className = 'calendar-tile';
     dates.push(currentDate);
     currentDate = addDays.call(currentDate, 1);
   }
@@ -59,6 +60,7 @@ export function getDates(month, year) {
   // Load all dates before the first day of the month, based on the number of days
   while (first > 0) {
     firstLastDay = addDays.call(firstLastDay, -1);
+    firstLastDay.className = 'calendar-tile other-month';
     dates.unshift(firstLastDay);
     first--;
   }
@@ -66,6 +68,7 @@ export function getDates(month, year) {
   // Load all dates after the last day of the month, based on the number of days
   while (last > 0) {
     lastLastDay = addDays.call(lastLastDay, 1);
+    lastLastDay.className = 'calendar-tile other-month';
     dates.push(lastLastDay);
     last--;
   }

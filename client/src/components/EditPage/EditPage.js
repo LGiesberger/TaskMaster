@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import closeIcon from '../../images/5299154331543238955.svg';
 import './EditPage.css';
 import { useHistory, useLocation, useParams } from 'react-router';
-import { transformDateForInput } from '../../utils/utils';
+import { transformDateForInput } from '../../utils/dates_helper';
 
 export default function EditPage() {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ export default function EditPage() {
               When are you planning to do this?
             </label>
             <input
-              className="edit-input datetime"
+              className="edit-input"
               type="datetime-local"
               value={state.date}
               onChange={({ target }) => {

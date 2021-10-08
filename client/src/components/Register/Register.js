@@ -1,8 +1,10 @@
-import { useState } from 'react';
-import { registerAction } from '../../redux/actions/userActions';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { registerAction, logoutAction } from '../../redux/actions/userActions';
 import './Register.css';
 
 export default function Register() {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -12,7 +14,7 @@ export default function Register() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    registerAction(state);
+    dispatch(registerAction(state));
     setState({
       username: '',
       password: '',
@@ -49,6 +51,10 @@ export default function Register() {
     }));
   }
 
+  useEffect(() => {
+    dispatch(logoutAction());
+  }, [dispatch]);
+
   return (
     <div className="register">
       <div className="register-content">
@@ -76,10 +82,10 @@ export default function Register() {
             <label className="register-input-label">Email address</label>
             <input
               className="register-input"
-              type="text"
+              type="email"
               value={state.email}
               onChange={onEmailChange}
-              pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               required
             ></input>
             <label className="register-input-label">First Name</label>

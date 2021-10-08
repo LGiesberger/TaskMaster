@@ -27,3 +27,7 @@
   text-align: center;
   display: inline-block;
 }
+
+.other-month {
+  opacity: 0.8;
+}
