@@ -1,0 +1,77 @@
+.profile {
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.profile-header {
+  height: 25%;
+  width: 110%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 100% 100%;
+  border: none;
+  background: url(../../images/mountain-image.jpg);
+  box-shadow: inset 0 0 0 2000px rgb(105 90 205 / 50%);
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-body {
+  width: 100%;
+}
+
+.icon-container {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid #cccccc;
+  margin-top: -16%;
+  background: white;
+}
+
+.profile-title {
+  margin-top: -10%;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.profile-icon {
+  width: 50%;
+}
+
+.profile-field-list {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+}
+
+.profile-field-item {
+  border-bottom: 1px solid #d0d0d0;
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-field-icon {
+  width: 20px;
+  margin-right: 40px;
+}
+
+.profile-field-text {
+  font-size: 1rem;
+  color: #999;
+}
