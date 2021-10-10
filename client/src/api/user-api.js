@@ -1,3 +1,4 @@
+import authHeader from '../utils/auth_helper';
 const SERVER_URL = 'http://localhost:3001';
 
 export function registerUser(data) {
@@ -13,5 +14,12 @@ export function loginUser(credentials) {
     method: 'POST',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(credentials),
+  }).then((res) => res.json());
+}
+
+export function persistUser() {
+  return fetch(`${SERVER_URL}/profile`, {
+    method: 'GET',
+    headers: authHeader(),
   }).then((res) => res.json());
 }

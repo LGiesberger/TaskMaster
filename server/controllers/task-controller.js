@@ -22,7 +22,7 @@ task_controller.getAllTasks = async function (req, res) {
       user: req.uid,
     }).populate({
       path: 'user',
-      select: 'username password email first_name',
+      select: 'username password email name birthday',
     });
     res.status(200).send(tasks);
   } catch (err) {
@@ -41,7 +41,7 @@ task_controller.getAllTasksForDay = async function (req, res) {
       numericalDate,
     }).populate({
       path: 'user',
-      select: 'email password first_name',
+      select: 'username password email name birthday',
     });
     res.status(200).send(tasks);
   } catch (err) {
