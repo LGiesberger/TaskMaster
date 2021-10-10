@@ -11,10 +11,10 @@ router.post('/login', user_controller.loginUser);
 
 // Task stuff
 
-router.get('/edit/:taskId', authMiddleware, task_controller.getTask);
-router.get('/tasks/all', authMiddleware, task_controller.getAllTasks);
-router.post('/task', authMiddleware, task_controller.createTask);
+router.get('/tasks', authMiddleware, task_controller.getAllTasks);
 router.post('/tasks', authMiddleware, task_controller.getAllTasksForDay);
+router.get('/edit/:taskId', authMiddleware, task_controller.getTask);
+router.post('/task', authMiddleware, task_controller.createTask);
 router.put('/tasks/:taskId', authMiddleware, task_controller.editTask);
 router.put(
   '/tasks/:taskId/status',

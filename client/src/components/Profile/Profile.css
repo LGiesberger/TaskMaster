@@ -76,3 +76,26 @@
   font-size: 1rem;
   color: #999;
 }
+
+.button-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.button {
+  width: 50%;
+  border: none;
+  padding: 15px 0;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.completed-profile {
+  background-color: #03ba03;
+}
+
+.ongoing-profile {
+  background-color: #ff2d2d;
+}

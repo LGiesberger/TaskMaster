@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TaskList from '../TaskList/TaskList';
-import { getAllTasksAction } from '../../redux/actions/taskActions';
+import { getAllTasksForDayAction } from '../../redux/actions/taskActions';
 import {
   nextDayAction,
   previousDayAction,
@@ -18,7 +18,6 @@ import {
 
 export default function App() {
   const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.taskReducer);
   const completedTasks = useSelector((state) => state.completedReducer);
   const ongoingTasks = useSelector((state) => state.ongoingReducer);
   const numericalDate = useSelector((state) =>
@@ -32,7 +31,7 @@ export default function App() {
   const prettyDate = prettifyMonthDate(String(numericalDate));
 
   useEffect(() => {
-    dispatch(getAllTasksAction(numericalDate));
+    dispatch(getAllTasksForDayAction(numericalDate));
   }, [dispatch, numericalDate, ongoingTasksString, completedTasksString]);
 
   return (
@@ -59,7 +58,7 @@ export default function App() {
           </Link>
         </div>
 
-        {tasks.length ? (
+        {completedTasks.length || ongoingTasks.length ? (
           <div className="lists">
             <TaskList tasks={completedTasks} listTitle={'Completed'} />
             <TaskList tasks={ongoingTasks} listTitle={'Ongoing'} />

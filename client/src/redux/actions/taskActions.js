@@ -4,13 +4,21 @@ import {
   deleteTask,
   setTaskCompletedProp,
   editTask,
+  getAllTasks,
 } from '../../api/task-api';
 
-export const getAllTasksAction = (numericalDate) => {
+export const getAllTasksAction = () => {
+  return async (dispatch) => {
+    const tasks = await getAllTasks();
+    dispatch({ type: 'GET_ALL_TASKS', payload: tasks });
+  };
+};
+
+export const getAllTasksForDayAction = (numericalDate) => {
   return async (dispatch) => {
     const tasks = await getAllTasksForDay(numericalDate);
     dispatch({
-      type: 'GET_ALL_TASKS',
+      type: 'GET_ALL_TASKS_FOR_DAY',
       payload: tasks,
     });
   };

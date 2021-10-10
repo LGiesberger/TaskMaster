@@ -9,6 +9,13 @@ export function getSingleTask(taskId) {
   }).then((res) => res.json());
 }
 
+export function getAllTasks() {
+  return fetch(`${SERVER_URL}/tasks`, {
+    method: 'GET',
+    headers: authHeader(),
+  }).then((res) => res.json());
+}
+
 export function getAllTasksForDay(numericalDate) {
   return fetch(`${SERVER_URL}/tasks`, {
     method: 'POST',
