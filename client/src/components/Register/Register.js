@@ -9,7 +9,7 @@ export default function Register() {
     username: '',
     password: '',
     email: '',
-    firstName: '',
+    name: '',
   });
 
   function handleSubmit(event) {
@@ -19,7 +19,8 @@ export default function Register() {
       username: '',
       password: '',
       email: '',
-      firstName: '',
+      name: '',
+      birthday: '',
     });
   }
 
@@ -44,10 +45,17 @@ export default function Register() {
     }));
   }
 
-  function onFirstNameChange({ target }) {
+  function onNameChange({ target }) {
     setState((prevState) => ({
       ...prevState,
-      firstName: target.value,
+      name: target.value,
+    }));
+  }
+
+  function onBirthdayChange({ target }) {
+    setState((prevState) => ({
+      ...prevState,
+      birthday: target.value,
     }));
   }
 
@@ -88,12 +96,20 @@ export default function Register() {
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               required
             ></input>
-            <label className="register-input-label">First Name</label>
+            <label className="register-input-label">Birthday</label>
+            <input
+              className="register-input"
+              type="date"
+              value={state.birthday}
+              onChange={onBirthdayChange}
+              required
+            ></input>
+            <label className="register-input-label">Name</label>
             <input
               className="register-input"
               type="text"
-              value={state.firstName}
-              onChange={onFirstNameChange}
+              value={state.name}
+              onChange={onNameChange}
               required
             ></input>
             <button className="register-button" type="submit">

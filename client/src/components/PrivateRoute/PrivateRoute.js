@@ -1,13 +1,18 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import Register from '../Register/Register';
+import { persistUserAction } from '../../redux/actions/userActions';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
+  const dispatch = useDispatch();
+  const userState = useSelector((state) => state.userReducer);
+  const token = localStorage.getItem('token');
+  if (!userState.status && token) dispatch(persistUserAction());
   return (
     <Route
       {...rest}
       render={(props) =>
-        localStorage.getItem('token') && Component !== Register ? (
+        localStorage.getItem('token') ? (
           <Component {...props} />
         ) : (
           <Redirect
