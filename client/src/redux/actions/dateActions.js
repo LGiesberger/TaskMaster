@@ -1,5 +1,5 @@
 import { getAllTasksForDay } from '../../api/task-api';
-import { numericToISO } from '../../utils/dates_helper';
+import { numericDateToISODate } from '../../utils/dates_helper';
 
 export const nextDayAction = (numericalDate) => {
   return async (dispatch) => {
@@ -19,7 +19,7 @@ export const selectDateAction = (numericalDate) => {
     dispatch({
       type: 'SELECTED_DATE',
       payload: tasks,
-      date: numericToISO(numericalDate),
+      date: numericDateToISODate(numericalDate),
     });
   };
 };

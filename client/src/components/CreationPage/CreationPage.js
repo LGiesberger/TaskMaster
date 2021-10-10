@@ -6,13 +6,13 @@ import closeIcon from '../../images/5299154331543238955.svg';
 import './CreationPage.css';
 import {
   checkCurrentDate,
-  numerifyDate,
+  dateToNumericalDate,
   transformDateForInput,
 } from '../../utils/dates_helper';
 
 export default function CreationPage() {
   const numericalDate = useSelector((state) =>
-    Number(numerifyDate(state.dateReducer))
+    Number(dateToNumericalDate(state.dateReducer))
   );
 
   const dispatch = useDispatch();

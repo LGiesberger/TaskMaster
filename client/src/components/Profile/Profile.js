@@ -5,6 +5,7 @@ import envelope_icon from '../../images/envelope-regular.svg';
 import calendar_icon from '../../images/calendar-regular.svg';
 import eye_icon from '../../images/eye-regular.svg';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 export default function Profile() {
   const { status, user } = useSelector((state) => state.userReducer);
@@ -33,7 +34,9 @@ export default function Profile() {
               src={calendar_icon}
               className="profile-field-icon"
             />
-            <p className="profile-field-text">19-09-1999</p>
+            <p className="profile-field-text">
+              {moment(user.birthday).format('DD MMMM YYYY')}
+            </p>
           </li>
           <li className="profile-field-item">
             <img

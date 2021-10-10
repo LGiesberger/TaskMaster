@@ -1,4 +1,8 @@
-import { getDates, formatMonth, numerifyDate } from '../../utils/dates_helper';
+import {
+  getDates,
+  formatMonth,
+  dateToNumericalDate,
+} from '../../utils/dates_helper';
 import rightArrowIcon from '../../images/chevron-right-solid.svg';
 import leftArrowIcon from '../../images/chevron-left-solid.svg';
 import { useEffect, useState } from 'react';
@@ -16,7 +20,7 @@ export default function Calendar() {
   const dispatch = useDispatch();
 
   function handleClick(date) {
-    dispatch(selectDateAction(Number(numerifyDate(date))));
+    dispatch(selectDateAction(Number(dateToNumericalDate(date))));
     history.push('/');
   }
 
@@ -60,7 +64,7 @@ export default function Calendar() {
           {dates.map((date) => {
             return (
               <button
-                key={numerifyDate(date)}
+                key={dateToNumericalDate(date)}
                 className={
                   date.getDate() === new Date().getDate() &&
                   date.getMonth() === new Date().getMonth()

@@ -11,7 +11,10 @@ import {
   nextDayAction,
   previousDayAction,
 } from '../../redux/actions/dateActions';
-import { numerifyDate, prettifyDate } from '../../utils/dates_helper';
+import {
+  dateToNumericalDate,
+  prettifyMonthDate,
+} from '../../utils/dates_helper';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -19,14 +22,14 @@ export default function App() {
   const completedTasks = useSelector((state) => state.completedReducer);
   const ongoingTasks = useSelector((state) => state.ongoingReducer);
   const numericalDate = useSelector((state) =>
-    Number(numerifyDate(state.dateReducer))
+    Number(dateToNumericalDate(state.dateReducer))
   );
 
   // JSON.stringify causes the array to be turned into a string, making it easier to do a strict equality comparison, therefore the useEffect method will not loop infinitely.
   const completedTasksString = JSON.stringify(completedTasks);
   const ongoingTasksString = JSON.stringify(ongoingTasks);
 
-  const prettyDate = prettifyDate(String(numericalDate));
+  const prettyDate = prettifyMonthDate(String(numericalDate));
 
   useEffect(() => {
     dispatch(getAllTasksAction(numericalDate));

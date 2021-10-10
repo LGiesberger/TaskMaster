@@ -1,17 +1,21 @@
 import moment from 'moment';
 
-export function numerifyDate(dateISO) {
+export function dateToNumericalDate(dateISO) {
   return moment(dateISO).format('YYYYMMDD'); // Example: 20210927
 }
 
-export function numericToISO(numericalDate) {
+export function numericDateToISODate(numericalDate) {
   const string =
     typeof numericalDate === 'number' ? String(numericalDate) : numericalDate;
   return moment(string).format(); // '20210927  --> full date September 21st, 2021'
 }
 
-export function prettifyDate(numericalDate) {
+export function prettifyMonthDate(numericalDate) {
   return moment(numericalDate).format('MMMM Do'); // Example: September 27th
+}
+
+export function prettifyDateMonthYear(date) {
+  return moment(date).format('DD MMMM YYYY'); // Example: 27 September 2021
 }
 
 export function checkCurrentDate(numericalDate) {
@@ -19,7 +23,7 @@ export function checkCurrentDate(numericalDate) {
   const year = numericalDate.slice(0, 4);
   const month = numericalDate.slice(4, 6) - 1;
   const day = numericalDate.slice(6, 8);
-  return numericalDate === numerifyDate(date)
+  return numericalDate === dateToNumericalDate(date)
     ? date
     : addTwelveHours(new Date(year, month, day));
 }
