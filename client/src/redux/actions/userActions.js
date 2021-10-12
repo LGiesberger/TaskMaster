@@ -1,4 +1,9 @@
-import { loginUser, registerUser, persistUser } from '../../api/user-api';
+import {
+  loginUser,
+  registerUser,
+  persistUser,
+  editUser,
+} from '../../api/user-api';
 import history from '../../utils/history';
 
 export function registerAction(credentials) {
@@ -31,5 +36,12 @@ export function persistUserAction() {
   return async (dispatch) => {
     const res = await persistUser();
     dispatch({ type: 'LOGIN', status: res.auth, user: res.user });
+  };
+}
+
+export function editUserAction(data) {
+  return async (dispatch) => {
+    const res = await editUser(data);
+    dispatch({ type: 'EDIT_USER', status: true, user: res });
   };
 }

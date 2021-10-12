@@ -23,3 +23,11 @@ export function persistUser() {
     headers: authHeader(),
   }).then((res) => res.json());
 }
+
+export function editUser(data) {
+  return fetch(`${SERVER_URL}/profile`, {
+    method: 'PUT',
+    headers: authHeader(true),
+    body: JSON.stringify(data),
+  }).then((res) => res.json());
+}

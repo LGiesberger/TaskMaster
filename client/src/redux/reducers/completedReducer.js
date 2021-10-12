@@ -1,6 +1,7 @@
 const completedReducer = (state = [], action) => {
   switch (action.type) {
     case 'GET_ALL_TASKS_FOR_DAY':
+    case 'GET_ALL_TASKS':
       return action.payload.filter((task) => {
         return task.completed === true;
       }); // return all tasks with true completed status

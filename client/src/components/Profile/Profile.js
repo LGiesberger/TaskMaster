@@ -4,20 +4,27 @@ import user_thin_icon from '../../images/user-regular.svg';
 import envelope_icon from '../../images/envelope-regular.svg';
 import calendar_icon from '../../images/calendar-regular.svg';
 import card_icon from '../../images/id-card-regular.svg';
+import edit_icon from '../../images/pencil-alt-solid.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getAllTasksAction } from '../../redux/actions/taskActions';
+import Modal from '../Modal/Modal';
 
 export default function Profile() {
-  const { status, user } = useSelector((state) => state.userReducer);
-  const tasks = useSelector((state) => state.taskReducer);
+  const { user } = useSelector((state) => state.userReducer);
+  const completedTasks = useSelector((state) => state.completedReducer);
+  const ongoingTasks = useSelector((state) => state.ongoingReducer);
   const dispatch = useDispatch();
-  if (status) console.log(user);
+  const [activated, setActivated] = useState({
+    prop: '',
+    status: false,
+  });
 
   useEffect(() => {
     dispatch(getAllTasksAction());
   }, [dispatch]);
+
   return (
     <div className="profile">
       <div className="profile-header">
@@ -35,6 +42,7 @@ export default function Profile() {
               className="profile-field-icon"
             />
             <p className="profile-field-text">{user.username}</p>
+            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
           <li className="profile-field-item">
             <img
@@ -43,6 +51,7 @@ export default function Profile() {
               className="profile-field-icon"
             />
             <p className="profile-field-text">{user.name}</p>
+            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
           <li className="profile-field-item">
             <img
@@ -53,6 +62,7 @@ export default function Profile() {
             <p className="profile-field-text">
               {moment(user.birthday).format('DD MMMM YYYY')}
             </p>
+            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
           <li className="profile-field-item">
             <img
@@ -61,15 +71,16 @@ export default function Profile() {
               className="profile-field-icon"
             />
             <p className="profile-field-text">{user.email}</p>
+            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
         </ul>
       </div>
       <div className="button-container">
         <button className="completed-profile button">
-          Completed: {tasks.filter((task) => task.completed).length}
+          Completed: {completedTasks.length}
         </button>
         <button className="ongoing-profile button">
-          Ongoing: {tasks.filter((task) => !task.completed).length}
+          Ongoing: {ongoingTasks.length}
         </button>
       </div>
     </div>

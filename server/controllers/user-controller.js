@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { findByIdAndUpdate } = require('../models/user');
 const saltRounds = 10;
 const accessTokenSecret = 'jwtSecret';
 
@@ -67,6 +68,18 @@ user_controller.persistUser = async function (req, res) {
     const userId = req.uid;
     const user = await User.findById(userId);
     res.status(200).json({ auth: true, user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('error');
+  }
+};
+
+user_controller.editUser = async function (req, res) {
+  try {
+    const userId = req.uid;
+    const { user } = req.body;
+    const editedUser = findByIdAndUpdate(userId, user);
+    res.status(201).send(editedUser);
   } catch (err) {
     console.log(err);
     res.status(500).send('error');
