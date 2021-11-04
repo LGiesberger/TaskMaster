@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerAction, logoutAction } from '../../redux/actions/userActions';
+import { Link } from 'react-router-dom';
 import './Register.css';
 
 export default function Register() {
@@ -10,6 +11,7 @@ export default function Register() {
     password: '',
     email: '',
     name: '',
+    birthday: '',
   });
 
   function handleSubmit(event) {
@@ -79,7 +81,7 @@ export default function Register() {
               onChange={onUsernameChange}
               required
             ></input>
-            <label className="register-input-label">password</label>
+            <label className="register-input-label">Password</label>
             <input
               className="register-input"
               type="password"
@@ -96,14 +98,6 @@ export default function Register() {
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               required
             ></input>
-            <label className="register-input-label">Birthday</label>
-            <input
-              className="register-input"
-              type="date"
-              value={state.birthday}
-              onChange={onBirthdayChange}
-              required
-            ></input>
             <label className="register-input-label">Name</label>
             <input
               className="register-input"
@@ -112,10 +106,24 @@ export default function Register() {
               onChange={onNameChange}
               required
             ></input>
+            <label className="register-input-label">Birthday</label>
+            <input
+              className="register-input"
+              type="date"
+              value={state.birthday}
+              onChange={onBirthdayChange}
+              required
+            ></input>
             <button className="register-button" type="submit">
               Submit
             </button>
           </form>
+        </div>
+        <div className="login-footer">
+          <p>Already have an account?</p>
+          <Link to="/login" className="link">
+            Login here
+          </Link>
         </div>
       </div>
     </div>

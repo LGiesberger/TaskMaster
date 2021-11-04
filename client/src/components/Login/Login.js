@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginAction, logoutAction } from '../../redux/actions/userActions';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 export default function Login() {
@@ -65,6 +66,12 @@ export default function Login() {
               Submit
             </button>
           </form>
+        </div>
+        <div className="login-footer">
+          <p>Don't have an account?</p>
+          <Link to="/register" className="link">
+            Register here
+          </Link>
         </div>
       </div>
     </div>

@@ -7,19 +7,14 @@ import card_icon from '../../images/id-card-regular.svg';
 import edit_icon from '../../images/pencil-alt-solid.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getAllTasksAction } from '../../redux/actions/taskActions';
-import Modal from '../Modal/Modal';
 
 export default function Profile() {
   const { user } = useSelector((state) => state.userReducer);
   const completedTasks = useSelector((state) => state.completedReducer);
   const ongoingTasks = useSelector((state) => state.ongoingReducer);
   const dispatch = useDispatch();
-  const [activated, setActivated] = useState({
-    prop: '',
-    status: false,
-  });
 
   useEffect(() => {
     dispatch(getAllTasksAction());

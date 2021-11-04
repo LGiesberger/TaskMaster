@@ -65,3 +65,17 @@
   bottom: 0;
   left: 0;
 }
+
+.login-footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.link {
+  color: slateblue;
+  font-size: 15px;
+  padding: 0 10px;
+  font-weight: 500;
+}

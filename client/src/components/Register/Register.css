@@ -22,15 +22,10 @@
 }
 
 .register-body {
-  height: 40vh;
   padding: 20px 0;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   font-size: 15px;
-}
-
-.register-form {
-  height: 100%;
 }
 
 .register-input-label {
