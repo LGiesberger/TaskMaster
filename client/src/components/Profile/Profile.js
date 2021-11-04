@@ -37,7 +37,6 @@ export default function Profile() {
               className="profile-field-icon"
             />
             <p className="profile-field-text">{user.username}</p>
-            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
           <li className="profile-field-item">
             <img
@@ -46,7 +45,6 @@ export default function Profile() {
               className="profile-field-icon"
             />
             <p className="profile-field-text">{user.name}</p>
-            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
           <li className="profile-field-item">
             <img
@@ -57,7 +55,6 @@ export default function Profile() {
             <p className="profile-field-text">
               {moment(user.birthday).format('DD MMMM YYYY')}
             </p>
-            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
           <li className="profile-field-item">
             <img
@@ -66,7 +63,6 @@ export default function Profile() {
               className="profile-field-icon"
             />
             <p className="profile-field-text">{user.email}</p>
-            <img alt="edit icon" src={edit_icon} className="edit-icon" />
           </li>
         </ul>
       </div>
