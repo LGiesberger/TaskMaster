@@ -1,5 +1,6 @@
 const { Schema } = require('mongoose');
 const mongoose = require('../db');
+const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
   title: { type: String, required: true },
@@ -9,6 +10,4 @@ const taskSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
-const Task = mongoose.model('Task', taskSchema);
-
-module.exports = Task;
+module.exports = mongoose.model('Tasks', taskSchema);
