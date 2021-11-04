@@ -9,12 +9,17 @@ Users can then click on the purple button at the bottom to add a new task to the
 Should the user have completed a task, they can change the status by clicking on the icon on the left of the title. **(See screenshot 3)**</br></br>
 The user can also edit the title of their task or the date/time it has been scheduled on by clicking on the pencil icon, should it be desired a task can also be removed by clicking on the trashcan icon.</br></br>
 Users can scroll ahead/back to other dates by using the arrows at the top left and right of the task-overview. Or if they need to look at a more specific date that will require a lot of scrolling, they can click on the 'Calendar' button to speed up this process.</br></br>
-The current date will be highlighted, users can click on any date and the app will take them straight there. **(See screenshot 4)**</br>
+The current date will be highlighted, users can click on any date and the app will take them straight there. **(See screenshot 4)**</br></br>
+Users can register, log in and see their profile data. **(See screenshots 5, 6 and 7)**
 
 ![Dashboard](./screenshots/Screenshot_1_TaskMaster.png)
 ![New Task](./screenshots/Screenshot_2_TaskMaster.png)
 ![Status Change](./screenshots/Screenshot_3_TaskMaster.png)
-![Calendar](./screenshots/Screenshot_4_TaskMaster.png)</br>
+![Calendar](./screenshots/Screenshot_4_TaskMaster.png)
+![Login](./screenshots/Screenshot_5_TaskMaster.png)
+![Register](./screenshots/Screenshot_6_TaskMaster.png)
+![Profile](./screenshots/Screenshot_7_TaskMaster.png)
+
 
 ### Getting started
 
@@ -33,7 +38,7 @@ The current date will be highlighted, users can click on any date and the app wi
 
 1. Move into the server folder
 2. Run `npm i` in your terminal.
-3. Start the server by running `npx nodemon` in your terminal
+3. Start the server by running `nodemon` in your terminal
 
 **Front end:**
 
@@ -47,7 +52,3 @@ The current date will be highlighted, users can click on any date and the app wi
 TaskMaster has been created using: </br></br>
 **Front-end**: React as the framework and redux to manage the state</br>
 **Back-end**: Express as the framework for the server and MongoDB for the database, using Mongoose as my ORM.</br>
-
-### Closing statement
-
-The app's current features are quite limited, it was built in 7 days as the final project to finish up the 8 week Web Development bootcamp I was in. The main focus of this project was to showcase the application, hence why I focused on styling and creating as many features as possible.
